@@ -109,9 +109,6 @@ h3 {
         padding: 0 clamp(10px, 5vw, 30px);
     }
     
-    .section-img img {
-        width: clamp(20%, 15vw, 30%);
-    }
 }
 
 @media (max-width: 480px) {
