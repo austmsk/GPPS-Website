@@ -271,25 +271,6 @@
     </section>
 
     <!-- Show/Hide Sidebar JavaScript -->
-    <script>
-        function showSidebar() {
-            const sidebar = document.querySelector('.sidebar');
-            const menuButton = document.querySelector('.menu-button');
-            sidebar.style.display = 'flex';
-            menuButton.style.display = 'none';
-        }
-
-        function hideSidebar() {
-            const sidebar = document.querySelector('.sidebar');
-            const menuButton = document.querySelector('.menu-button');
-            sidebar.style.display = 'none';
-            menuButton.style.display = 'block';
-        }
-
-        function toggleDropdown(dropdownID) {
-            var dropdown = document.getElementById(dropdownID);
-            dropdown.classList.toggle('open');
-        }
-    </script>
+    <script src="PPSJS.js"></script>
 </body>
 </html>
