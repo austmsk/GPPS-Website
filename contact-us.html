@@ -188,7 +188,7 @@
 
     <section class="contact-form">
         <section class="questionare-pps-contact">
-            <form action="/submit_contact_form" method="post">
+            <form action="/submit-contact-form" method="post">
                 <div class="user-inputs">
                     <div class="parent-student">
                         <label for="designation"> Relationship to the School </label>
@@ -272,5 +272,32 @@
 
     <!-- Show/Hide Sidebar JavaScript -->
     <script src="PPSJS.js"></script>
+    <script>
+        const form = document.querySelector("form");
+        form.addEventListener("submit", async (event) => {
+            event.preventDefault(); // Prevent default form submission
+    
+            const formData = new FormData(form);
+            const jsonData = Object.fromEntries(formData);
+    
+            try {
+                const response = await fetch(form.action, {
+                    method: form.method,
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(jsonData),
+                });
+    
+                if (response.ok) {
+                    alert("Form submitted successfully!");
+                    form.reset();
+                } else {
+                    alert("Failed to submit the form. Please try again.");
+                }
+            } catch (error) {
+                console.error("Error submitting form:", error);
+                alert("An error occurred. Please try again later.");
+            }
+        });
+    </script>
 </body>
 </html>
