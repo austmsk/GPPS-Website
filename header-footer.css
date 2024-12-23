@@ -43,6 +43,7 @@
     height: 90px;
     background-color: var(--background-color);
     padding: 0 1rem; /* Horizontal padding */
+    padding-right: 50px;
 }
 
 /******************************************/
@@ -56,29 +57,24 @@
 
 /* Logo image */
 .random-img-logo .random-logo {
-    height: 60px;
+    height: 90px;
     width: auto; /* Maintain aspect ratio */
 }
 
 /* Text logo */
 .written-logo-link .written-logo {
     font-family: var(--header-font);
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: bold;
     text-decoration: none;
     color: var(--secondary-color);
 
     /* Optional text gradient */
     background: linear-gradient(var(--gradient-start), var(--gradient-end));
-    -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-.written-logo-link .written-logo:hover {
-    /* On hover, revert to a single color or highlight color */
-    background: none;
-    color: var(--highlight-color);
-}
 
 /******************************************/
 /* NAVIGATION (DESKTOP)                   */
@@ -102,7 +98,7 @@
     color: var(--secondary-color);
     text-decoration: none;
     font-family: var(--header-font);
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: 500;
     transition: color 0.25s;
     display: flex;

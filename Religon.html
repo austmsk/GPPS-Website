@@ -64,44 +64,123 @@
                 </svg>
             </div>
         </div>
-        <aside class="sidebar">
-            <!-- "Hide Sidebar" selector img w/ javascript -->
-            <div class="x-button" onclick="hideSidebar()">
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
-                    <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
-                </svg>
-            </div>
-            <!-- Sidebar Menu Options -->
-            <ul class="menu-options-sidebar">
-                <li class="events-b-sidebar">
-                    <a href="#" class="about-button" onclick="toggleDropdown('about-dropdown')">About Us</a>
-                        <ul id="about-dropdown" class="dropdown-content"> 
-                            <li id="director-w-l"><a href="director-welcome-page.html" id="director-w-a"> Welcome from the Director </a></li>
-                            <li><a href="Religon.html"> Religous Affiliation </a></li>
-                            <li><a href="mission-and-vision.html"> Mission & Vision </a></li>
-                            <li><a href="history.html"> Our History </a></li>
-                        </ul>
-                </li>
-                <li class="events-b-sidebar">
-                    <a href="#" class="admissions-button" onclick="toggleDropdown('admissions-dropdown')">Admissions</a>
-                        <ul id="admissions-dropdown" class="dropdown-content"> 
-                            <li><a href="apply.html"> Apply </a></li>
-                            <li><a href="fees-structure.html"> Fees Structure </a></li>
-                            <li><a href="transportation.html"> Transportation </a></li>
-                        </ul>
-                </li>
-                <li class="events-b-sidebar">
-                    <a href="#" class="resources-button" onclick="toggleDropdown('resources-dropdown')">Resources</a>
-                        <ul id="resources-dropdown" class="dropdown-content"> 
-                            <li><a href="https://schoolsuite.co.ug"> School Pay </a></li>
-                            <li><a href="news-events.html"> News & Events </a></li>
-                           
-                        </ul>
-                </li>
+<aside class="sidebar">
+    
+    <div class="menu-selection" id="hamburger-menu" onclick="showSidebar()">
+        <svg class="menu-button" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
+          <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/>
+        </svg>
+      </div>
+      
+      <!-- Close/Hide Sidebar Button -->
+      <div class="close-sidebar-button" onclick="hideSidebar()" aria-label="Close Sidebar">
+        <svg xmlns="http://www.w3.org/2000/svg" 
+             height="24px" 
+             viewBox="0 -960 960 960" 
+             width="24px" 
+             fill="#5f6368" 
+             aria-hidden="true">
+          <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
+        </svg>
+      </div>
+      
+    
+    <!-- Sidebar Menu Options -->
+    <ul class="menu-options-sidebar">
 
-                <li class="events-b-sidebar" id="contact-b"><a href="contact-us.html" class="contact-button">Contact Us</a></li>
+        <!-- About Us Menu -->
+        <li class="events-b-sidebar">
+            <a href="#" 
+               class="about-button" 
+               onclick="toggleDropdown('about-dropdown')" 
+               aria-haspopup="true" 
+               aria-expanded="false">
+               About Us
+            </a>
+            <ul id="about-dropdown" class="dropdown-content">
+                <li>
+                    <a href="director-welcome-page.html" id="director-w-a">
+                        Welcome from the Director
+                    </a>
+                </li>
+                <li>
+                    <a href="religion.html">
+                        Religious Affiliation
+                    </a>
+                </li>
+                <li>
+                    <a href="mission-and-vision.html">
+                        Mission & Vision
+                    </a>
+                </li>
+                <li>
+                    <a href="history.html">
+                        Our History
+                    </a>
+                </li>
             </ul>
-        </aside>
+        </li>
+
+        <!-- Admissions Menu -->
+        <li class="events-b-sidebar">
+            <a href="#"
+               class="admissions-button" 
+               onclick="toggleDropdown('admissions-dropdown')" 
+               aria-haspopup="true" 
+               aria-expanded="false">
+               Admissions
+            </a>
+            <ul id="admissions-dropdown" class="dropdown-content">
+                <li>
+                    <a href="apply.html">
+                        Apply
+                    </a>
+                </li>
+                <li>
+                    <a href="fees-structure.html">
+                        Fees Structure
+                    </a>
+                </li>
+                <li>
+                    <a href="transportation.html">
+                        Transportation
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <!-- Resources Menu -->
+        <li class="events-b-sidebar">
+            <a href="#"
+               class="resources-button" 
+               onclick="toggleDropdown('resources-dropdown')" 
+               aria-haspopup="true" 
+               aria-expanded="false">
+               Resources
+            </a>
+            <ul id="resources-dropdown" class="dropdown-content"> 
+                <li>
+                    <a href="https://schoolsuite.co.ug" target="_blank" rel="noopener noreferrer">
+                        School Pay
+                    </a>
+                </li>
+                <li>
+                    <a href="news-events.html">
+                        News & Events
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <!-- Contact Us -->
+        <li class="events-b-sidebar" id="contact-b">
+            <a href="contact-us.html" class="contact-button">
+                Contact Us
+            </a>
+        </li>
+    </ul>
+</aside>
+
     </header>
 
 <main>
