@@ -17,6 +17,7 @@
     display: block;
     max-width: min(90vw, 1000px);
     margin: 0 auto;
+    margin-top: 20px;
     object-fit: cover;
     border-radius: clamp(8px, 2vw, 15px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow for better depth */

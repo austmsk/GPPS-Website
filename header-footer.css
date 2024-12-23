@@ -206,10 +206,8 @@
     flex-direction: column;
     justify-content: flex-start;
     background-color: var(--background-color);
-    /* For a frosted glass effect, uncomment:
-       background-color: rgba(255, 255, 255, 0.7);
-       backdrop-filter: blur(10px);
-    */
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
     z-index: 1001;
 
