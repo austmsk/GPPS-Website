@@ -3,10 +3,8 @@
     { "source": "/", "destination": "/home-page.html", "permanent": true }
   ],
   "rewrites": [
-    { "source": "/styles.css", "destination": "/public/styles.css" }
-  ],
-  "static": {
-    "public": "public"
-  }
+    { "source": "/home-page.css", "destination": "/pps-style/home-page.css" }
+  ]
 }
+
 
