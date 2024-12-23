@@ -1,0 +1,119 @@
+:root {
+  --main-font: 'paragraph-font', sans-serif;
+  --header-font: 'header-font', sans-serif;
+  --button-font: 'button-font', sans-serif;
+  --primary-color: #FFD700;
+  --background-color: white;
+  --secondary-color: black;
+  --highlight-color: orange;
+  --gradient-start: #FF0000;
+  --gradient-end: #470000;
+  --padding-small: 0.5rem;
+}
+
+body {
+  font-family: var(--main-font);
+  line-height: 1.6;
+  color: var(--secondary-color);
+  background-color: var(--background-color);
+  margin: 0;
+  padding: 0;
+}
+
+section {
+  max-width: 100%;
+  margin: 100px auto 50px;
+  padding: clamp(10px, 3vw, 20px);
+}
+
+section div {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+
+}
+
+.fees-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 20px;
+  height: 700px;
+}
+
+.fees-structure-container {
+  flex: 1;
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex; /* Added to enable flexbox centering */
+  flex-direction: column; /* Align items vertically */
+  justify-content: center; /* Center items vertically */
+  align-items: center; /* Center items horizontally */
+  height: 100%; /* Ensure it takes full height of the parent */
+}
+
+.fees-structure-container .hero-img {
+  width: 100%;
+  height: auto;
+  max-height: 500px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.history-text {
+  font-size: clamp(1rem, 2vw, 1.1rem);
+  line-height: 2rem;
+  text-align: justify;
+}
+
+h1 {
+  font-family: var(--header-font);
+  color: var(--gradient-start);
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+@media (max-width: 1024px) {
+  .left-side, .right-side {
+      display: none;
+  }
+  
+  .history-text-container {
+      padding: 0 clamp(10px, 5vw, 40px);
+  }
+
+  .history-text-container .hero-img {
+      max-height: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  section {
+      margin: 60px auto 30px;
+  }
+
+  .history-text {
+      text-align: left;
+  }
+
+  .history-text-container .hero-img {
+      max-height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  section {
+      margin: 40px auto 20px;
+  }
+  
+  .history-text-container {
+      padding: 0 10px;
+  }
+
+  .history-text-container .hero-img {
+      max-height: 200px;
+  }
+}

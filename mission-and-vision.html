@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en"> 
+    <head> 
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width initial-scale=1.0"> 
+        <title> Mission & Vision </title>
+        <link rel="icon" href="pps-images/pps-logo 2.png" type="image/icon type">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet">
+        
+        <link rel="stylesheet" href="PPS-styles/base-styles.css">
+        <link rel="stylesheet" href="PPS-styles/header-footer.css">
+        <link rel="stylesheet" href="pps-styles/Mission-Vision.css"> 
+        
+
+    </head>
+
+    <body>
+           <!-- Header Details -->
+    <header class="header">
+        <div class="header-gradient"></div>
+        <div class="header-content">
+
+            <!-- School Logo and Header -->
+            <div class="random-img-logo">
+                <img class="random-logo" src="PPS-images/pps-logo 2.png" alt="Premier Preparatory School Logo">
+
+                <div class="written-logo-link"> <a class="written-logo" href="home-page.html"> Premier Preparatory School </a> </div>
+            </div>
+
+            <!-- Header Menu Options -->
+            <nav class="left-side">
+                <ul class="menu-options">
+                    <li class="events-b about">
+                        <a href="#" class="about-button">About Us
+                            <span class="material-icons dropdown-icon">
+                                arrow_drop_down
+                                </span>
+                        </a>
+                            <ul class="drop-down">
+                                <li> <a class="drop-down-link" href="director-welcome-page.html"> Welcome from Director </a> </li> 
+                                <li><a class="drop-down-link" href="Religon.html"> Religous Affiliation </a></li>
+                                <li> <a class="drop-down-link" href="mission-and-vision.html"> Mission & Vision  </a></li>
+                                <li> <a class="drop-down-link" href="history.html"> Our History </a></li>
+                            </ul>
+                    
+                    </li>
+                    <li class="events-b about">
+                        <a href="#" class="about-button"> Admissions
+                            <span class="material-icons dropdown-icon">
+                                arrow_drop_down
+                                </span>
+                        </a>
+                            <ul class="drop-down">
+                                <li> <a class="drop-down-link" href="apply.html"> Apply </a> </li> 
+                                <li> <a class="drop-down-link" href="fees-structure.html"> Fees Structure </a> </li> 
+                                <li> <a class="drop-down-link" href="transportation.html"> Transportation </a></li>
+                            </ul>
+                    </li>
+                    <li class="events-b about">
+                        <a href="#" class="about-button"> Resources
+                            <span class="material-icons dropdown-icon">
+                                arrow_drop_down
+                                </span>
+                        </a>
+                            <ul class="drop-down">
+                                <li> <a class="drop-down-link" href="https://schoolsuite.co.ug"> School Pay </a> </li> 
+                                <li> <a class="drop-down-link" href="news-events.html"> News & Events </a> </li> 
+                            </ul>
+                    
+                    </li>
+                    <li class="events-b"><a href="contact-us.html" class="contact-button">Contact Us</a></li>
+                </ul>
+            </nav>
+                <!-- "Show Sidebar" selector img w/ javascript -->
+                <div class="menu-selection" onclick="showSidebar()">
+                    <svg class="menu-button" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
+                        <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/>
+                    </svg>
+                </div>
+        </div>
+
+        <!-- Sidebar Details -->
+        <aside class="sidebar">
+            <!-- "Hide Sidebar" selector img w/ javascript -->
+            <div class="x-button" onclick="hideSidebar()">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
+                    <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
+                </svg>
+            </div>
+            <!-- Sidebar Menu Options -->
+            <ul class="menu-options-sidebar">
+                <li class="events-b-sidebar">
+                    <a href="#" class="about-button" onclick="toggleDropdown('about-dropdown')">About Us</a>
+                        <ul id="about-dropdown" class="dropdown-content"> 
+                            <li id="director-w-l"><a href="director-welcome-page.html" id="director-w-a"> Welcome from the Director </a></li>
+                            <li><a href="Religon.html"> Religous Affiliation </a></li>
+                            <li><a href="mission-and-vision.html"> Mission & Vision </a></li>
+                            <li><a href="history.html"> Our History </a></li>
+                        </ul>
+                </li>
+                <li class="events-b-sidebar">
+                    <a href="#" class="admissions-button" onclick="toggleDropdown('admissions-dropdown')">Admissions</a>
+                        <ul id="admissions-dropdown" class="dropdown-content"> 
+                            <li><a href="#"> Apply </a></li>
+                            <li><a href="#"> Fees Structure </a></li>
+                            <li><a href="transportation.html"> Transportation </a></li>
+                        </ul>
+                </li>
+                <li class="events-b-sidebar">
+                    <a href="#" class="resources-button" onclick="toggleDropdown('resources-dropdown')">Resources</a>
+                        <ul id="resources-dropdown" class="dropdown-content"> 
+                            <li><a href="https://schoolsuite.co.ug"> School Pay </a></li>
+                            <li><a href="#"> News & Events </a></li>
+                           
+                        </ul>
+                </li>
+
+                <li class="events-b-sidebar" id="contact-b"><a href="contact-us.html" class="contact-button">Contact Us</a></li>
+            </ul>
+        </aside>
+    </header>
+
+    <div class="here-photo">
+        <img class="hero-img" src="pps-images/Speech Day 12:1/8246228A-29FA-4F83-9E02-7D61F188820A_1_201_a.jpeg" alt="Kids-Present-in-classroom">
+    </div>
+
+        <section class="mission-body">
+            <div class="leftside"></div>
+
+            <div class="PMS">
+                <h1 class="PMS-header">Mission & Vision</h1>
+
+                <!-- Introduction -->
+                <div class="mission-goals">
+                    <p>
+                        At Premier Preparatory School, our mission and vision form the cornerstone of our educational philosophy and community life. We believe that education transcends academics, focusing on nurturing well-rounded, empathetic individuals poised to make a positive impact globally.
+
+                    </p>
+
+                    <p>
+                        Our mission statement and goals reflect an unwavering commitment to excellence, innovation, and holistic student development. We foster a supportive, inspiring environment where learners thrive academically, emotionally, and socially.
+                    </p>
+                     
+                    <p>
+                        As you explore this page, discover the core values driving us, ambitious objectives for learners and staff, and our forward-looking vision for education's future. These principles underpin the Premier Preparatory experience, embodying our promise to learners, families, and the broader community.
+
+
+                    </p>
+
+                    <p>
+                        Join us in shaping the next generation of thinkers, leaders, and global citizens. Together, we're building a legacy of excellence that will inspire a brighter future, one learner at a time.
+                        
+                    </p>
+                </div>
+
+                <!-- Vision Statement -->
+                <div class="educational-excellence">
+                    <div class="section-img">
+                        <img class="VM-Icon" src="pps-images/vision.png" alt="Vision illustration">
+                    </div>
+
+                    <h2>Our Vision</h2>
+                    <p>
+                        At Premier Preparatory Schools, we envision a future where our institution is renowned as the leading primary education provider in the region. We strive to nurture young minds, fostering academic excellence, emotional intelligence, and social growth through a holistic approach to education.
+
+                    </p>
+
+                    <p>
+                        Our aspiration is to shape confident, compassionate, and values-driven individuals who are equipped to navigate life's challenges and contribute positively to a harmonious, inclusive, and socioeconomically balanced global community.
+
+                    </p>
+
+                    <p>
+                        By inspiring a love for learning and instilling strong moral values, we aim to provide each learner with a solid foundation for future success, empowering them to reach their full potential and become impactful, responsible, and engaged global citizens.
+                    </p>
+                </div>
+
+                <!-- Mission Statement -->
+                <div class="global-perspective">
+                    <div class="section-img">
+                        <img class="VM-Icon" src="pps-images/mission.png" alt="Mission illustration">
+                    </div>
+
+                    <h2>Our Mission</h2>
+                    <p>
+                        Premier Primary School (PPS) is deeply committed to delivering a comprehensive and high-quality educational experience that lays a strong foundation of knowledge, skills, and core values for every learner. Our mission is to create a nurturing and inclusive environment where learners are inspired to achieve academic excellence while developing the critical thinking, creativity, and practical skills needed for lifelong success. We prioritize fostering a culture of mutual respect, self-discipline, and a profound sense of social responsibility, ensuring each learner grows into a well-rounded individual prepared to contribute positively to their community and beyond. Our holistic approach to education aims to empower young minds to thrive personally and socially in an ever-changing world.
+                    </p>
+                </div>
+
+                <!-- Core Objectives -->
+                <div class="global-perspective">
+                    <div class="section-img">
+                        <img class="VM-Icon" src="pps-images/list.png" alt="Objectives illustration">
+                    </div>
+
+                    <h2>Our Core Objectives</h2>
+
+                    <h3>1. To provide a holistic, high-quality education to the learners</h3>
+                    <p>
+                        Premier Preparatory School is dedicated to offering a comprehensive education that goes beyond academics to include the physical, emotional, and social dimensions of learning. By integrating innovative teaching methods, a diverse curriculum, and extracurricular opportunities, we ensure our learners are well-prepared to excel in all areas of life. This holistic approach empowers learners to think critically, solve problems creatively, and develop the resilience to navigate a dynamic and ever-changing world.
+                    </p>
+
+                    <h3>2. To inculcate discipline and morals in our learners and future global leaders</h3>
+                    <p>
+                        We aim to shape our learner into morally upright, disciplined, and responsible individuals who embody integrity and respect. By fostering a strong ethical foundation and instilling values such as honesty, compassion, and accountability, we prepare our learners to lead purposefully and positively influence their communities in Uganda and globally.
+                    </p>
+
+                    <h3>3. To develop social and communication skills for future success </h3>
+                    <p>
+                        Recognizing the importance of effective communication and collaboration in today's interconnected world, we emphasize developing social and interpersonal skills in our learners. Through group activities, public speaking opportunities, and a focus on emotional intelligence, we equip our learners with the ability to express themselves confidently, work harmoniously with others, and adapt to diverse environments—essential for national and global economic success.
+                    </p>
+
+                    <h3>4. To promote environmental stewardship and a corruption-free society</h3>
+                    <p>
+                        We believe education is a powerful tool for fostering a sense of responsibility toward society and the environment. By integrating environmental education and sustainability practices into our curriculum, we inspire learners to become advocates for a cleaner, greener future. Additionally, we actively encourage ethical behavior and transparency, nurturing a generation that values integrity and is committed to building a corruption-free society that prioritizes the well-being of all its citizens.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+            <div class="rightside"></div>
+
+                    <!-- Footer Details -->
+                    <footer class="footer">
+
+        
+                        <div class="bottom-info">
+                            <div class="bottom-imgs">
+                
+                                <img class="footer-img" src="PPS-images/pps-logo 2.png" alt="PPS-Logo">
+                                <img class="UG-img" src="PPS-images/uganda-img.webp" alt="Republic of Uganda">
+                
+                            </div>
+                
+                            <div class="map">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127659.6743579025!2d31.479396585833367!3d-0.863877632970657!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19d9e726975afb55%3A0xf5c705c6d52416f3!2sPremier%20Preparatory%20School%20-%20Sanje%20Kyotera!5e0!3m2!1sen!2sus!4v1722298588886!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                
+                            </div>
+                        </div>
+                        <div class="key-links">
+                            <nav>
+                                <div class="footer-key-links">Key Links
+                                    <ul>
+                                        <li class="events-b-footer"><a href="director-welcome-page.html" class="about-button"> Director Welcome </a></li>
+                                        <li class="events-b-footer"><a href="apply.html" class="news-events-button">Admissions</a></li>
+                                        <li class="events-b-footer"><a href="https://schoolsuite.co.ug" class="pay-button"> School Pay </a></li>
+                                        <li class="events-b-footer"><a href="contact-us.html" class="contact-button">Contact Us</a></li>
+                                    </ul>
+                                </div>
+                                <div class="footer-contact-links"> 
+                
+                                    <div class="email-link">
+                
+                                        <h1 class="footer-contact-us-label"> Contact Us </h1>
+                
+                                        <div class="Accreditation">
+                                            <a href="PPS REGISTRATION.pdf" download="PPS-REGISTRATION">  Accreditation and Registration</a>
+                                         </div>
+                
+                                       <div class="phone-number"> Phone: +256-786-83-2025</div>
+                                        
+                                        <div class="email-address">
+                                            Email: <a> premier.prep.sch@gmail.com</a>
+                                        </div>
+                
+                                        <div class="PO-Box">
+                                            Premier Preparatory School P.O. Box 335, Masaka. Uganda.
+                                        </div>
+                
+                
+                                    </div>
+                
+                                    <div class="footer-social-media-links">
+                                        <a href="https://www.facebook.com/premier.preparatory.9" target="_blank"><img src="pps-images/facebook.png" alt="facebook-icon"></a>
+                                        <a href="https://www.instagram.com/premierprepsch/" target="_blank"><img src="pps-images/instagram.png" alt="instagram-icon"></a>
+                                        <a href="https://twitter.com/premierprep" target="_blank"><img src="pps-images/twitter.png" alt="twitter-icon"></a>
+                                        <a href="https://www.youtube.com/premierprep" target="_blank"><img src="pps-images/youtube.png" alt="youtube-icon"></a>
+                                    </div>
+                
+                                </div>
+                            </nav>
+                        </div>
+                    </footer>
+
+            <!-- Show/Hide Sidebar javascript -->
+            <script src="PPSJS.js"></script>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,159 @@
+:root {
+    --slider-width: 800px;
+    --slide-height: 300px;
+    --primary-color: #ccc;
+    --active-color: #444;
+    --transition-timing: cubic-bezier(0.770, 0.000, 0.175, 1.000);
+  }
+  
+  #slider {
+    margin: 0 auto;
+    width: clamp(300px, 100%, var(--slider-width));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  #slider input[type=radio] {
+    display: none;
+  }
+  
+  #slider label {
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  #slider label:focus-visible {
+    outline: 2px solid #007bff;
+  }
+  
+  #slides {
+    padding: 0.625rem;
+    border: 0.1875rem solid var(--primary-color);
+    background: #fff;
+    position: relative;
+    z-index: 1;
+  }
+  
+  #overflow {
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  #slides .inner {
+    display: flex;
+    transition: transform 800ms var(--transition-timing);
+    height: var(--slide-height);
+  }
+  
+  #slide1:checked ~ #slides .inner { transform: translateX(0); }
+  #slide2:checked ~ #slides .inner { transform: translateX(-100%); }
+  #slide3:checked ~ #slides .inner { transform: translateX(-200%); }
+  #slide4:checked ~ #slides .inner { transform: translateX(-300%); }
+  
+  #slides .slide {
+    width: 100%;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: #fff;
+  }
+  
+  #slides .slide_1 { background: #00171F; }
+  #slides .slide_2 { background: #003459; }
+  #slides .slide_3 { background: #007EA7; }
+  #slides .slide_4 { background: #00A8E8; }
+  
+  #controls {
+    margin: -11.25rem 0 0 0;
+    width: 100%;
+    height: 3.125rem;
+    z-index: 3;
+    position: relative;
+  }
+  
+  #controls label {
+    transition: opacity 0.2s ease-out;
+    display: none;
+    width: 3.125rem;
+    height: 3.125rem;
+    opacity: 0.4;
+  }
+  
+  #controls label:hover {
+    opacity: 1;
+  }
+  
+  #controls label::before {
+    content: "";
+    display: inline-block;
+    width: 1.25rem;
+    height: 1.25rem;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>') no-repeat center;
+    filter: invert(1);
+  }
+  
+  #slide1:checked ~ #controls label:nth-child(2),
+  #slide2:checked ~ #controls label:nth-child(3),
+  #slide3:checked ~ #controls label:nth-child(4),
+  #slide4:checked ~ #controls label:nth-child(1) {
+    float: right;
+    margin: 0 -3.125rem 0 0;
+    display: block;
+  }
+  
+  #slide1:checked ~ #controls label:nth-last-child(2),
+  #slide2:checked ~ #controls label:nth-last-child(3),
+  #slide3:checked ~ #controls label:nth-last-child(4),
+  #slide4:checked ~ #controls label:nth-last-child(1) {
+    float: left;
+    margin: 0 0 0 -3.125rem;
+    display: block;
+    transform: rotate(180deg);
+  }
+  
+  #bullets {
+    margin: 9.375rem 0 0;
+    text-align: center;
+  }
+  
+  #bullets label {
+    display: inline-block;
+    width: 0.625rem;
+    height: 0.625rem;
+    border-radius: 50%;
+    background: var(--primary-color);
+    margin: 0 0.625rem;
+  }
+  
+  #slide1:checked ~ #bullets label:nth-child(1),
+  #slide2:checked ~ #bullets label:nth-child(2),
+  #slide3:checked ~ #bullets label:nth-child(3),
+  #slide4:checked ~ #bullets label:nth-child(4) {
+    background: var(--active-color);
+  }
+  
+  @media screen and (max-width: 56.25em) {
+    #slide1:checked ~ #controls label:nth-child(2),
+    #slide2:checked ~ #controls label:nth-child(3),
+    #slide3:checked ~ #controls label:nth-child(4),
+    #slide4:checked ~ #controls label:nth-child(1),
+    #slide1:checked ~ #controls label:nth-last-child(2),
+    #slide2:checked ~ #controls label:nth-last-child(3),
+    #slide3:checked ~ #controls label:nth-last-child(4),
+    #slide4:checked ~ #controls label:nth-last-child(1) {
+      margin: 0;
+    }
+    #slides {
+      max-width: calc(100% - 8.75rem);
+      margin: 0 auto;
+    }
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    #slides .inner {
+      transition: none;
+    }
+  }

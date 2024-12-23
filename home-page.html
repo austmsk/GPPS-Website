@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Welcome to Premier Preparatory School, where we nurture excellence and growth.">
+    <meta name="keywords" content="Premier Preparatory School, Education, School, Learning">
+    <meta name="author" content="Premier Preparatory School">
+    <title>Premier Preparatory School</title>
+    <link rel="icon" href="pps-images/pps-logo 2.png" type="image/png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="PPS-styles/header-footer.css">
+    <link rel="stylesheet" href="PPS-styles/home-page-info.css">
+    <link rel="stylesheet" href="PPS-styles/base-styles.css">
+    <link rel="stylesheet" href="PPS-styles/slider.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-gradient"></div>
+        <div class="header-content">
+            <div class="random-img-logo">
+                <img class="random-logo" src="PPS-images/pps-logo 2.png" alt="Premier Preparatory School Logo">
+                <div class="written-logo-link">
+                    <a class="written-logo" href="home-page.html">Premier Preparatory School</a>
+                </div>
+            </div>
+            <nav class="left-side">
+                <ul class="menu-options">
+                    <li class="events-b about">
+                        <a href="#" class="about-button">About Us
+                            <span class="material-icons dropdown-icon">arrow_drop_down</span>
+                        </a>
+                        <ul class="drop-down">
+                            <li><a class="drop-down-link" href="director-welcome-page.html">Welcome from Director</a></li>
+                            <li><a class="drop-down-link" href="Religon.html"> Religous Affiliation </a></li>
+                            <li><a class="drop-down-link" href="mission-and-vision.html">Mission & Vision</a></li>
+                            <li><a class="drop-down-link" href="history.html">Our History</a></li>
+                        </ul>
+                    </li>
+                    <li class="events-b about">
+                        <a href="#" class="about-button">Admissions
+                            <span class="material-icons dropdown-icon">arrow_drop_down</span>
+                        </a>
+                        <ul class="drop-down">
+                            <li><a class="drop-down-link" href="apply.html">Apply</a></li>
+                            <li><a class="drop-down-link" href="fees-structure.html">Fees Structure</a></li>
+                            <li><a class="drop-down-link" href="transportation.html">Transportation</a></li>
+                        </ul>
+                    </li>
+                    <li class="events-b about">
+                        <a href="#" class="about-button">Resources
+                            <span class="material-icons dropdown-icon">arrow_drop_down</span>
+                        </a>
+                        <ul class="drop-down">
+                            <li><a class="drop-down-link" href="https://schoolsuite.co.ug">School Pay</a></li>
+                            <li><a class="drop-down-link" href="news-events.html">News & Events</a></li>
+                        </ul>
+                    </li>
+                    <li class="events-b"><a href="contact-us.html" class="contact-button">Contact Us</a></li>
+                </ul>
+            </nav>
+            <div class="menu-selection" onclick="showSidebar()">
+                <svg class="menu-button" xmlns="http://www.w3.or</div>g/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
+                    <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/>
+                </svg>
+            </div>
+        </div>
+        <aside class="sidebar">
+            <!-- "Hide Sidebar" selector img w/ javascript -->
+            <div class="x-button" onclick="hideSidebar()">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
+                    <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
+                </svg>
+            </div>
+            <!-- Sidebar Menu Options -->
+            <ul class="menu-options-sidebar">
+                <li class="events-b-sidebar">
+                    <a href="#" class="about-button" onclick="toggleDropdown('about-dropdown')">About Us</a>
+                        <ul id="about-dropdown" class="dropdown-content"> 
+                            <li id="director-w-l"><a href="director-welcome-page.html" id="director-w-a"> Welcome from the Director </a></li>
+                            <li><a href="Religon.html"> Religon </a></li>
+                            <li><a href="mission-and-vision.html"> Mission & Vision </a></li>
+                            <li><a href="history.html"> Our History </a></li>
+                        </ul>
+                </li>
+                <li class="events-b-sidebar">
+                    <a href="#" class="admissions-button" onclick="toggleDropdown('admissions-dropdown')">Admissions</a>
+                        <ul id="admissions-dropdown" class="dropdown-content"> 
+                            <li><a href="apply.html"> Apply </a></li>
+                            <li><a href="fees-structure.html"> Fees Structure </a></li>
+                            <li><a href="transportation.html"> Transportation </a></li>
+                        </ul>
+                </li>
+                <li class="events-b-sidebar">
+                    <a href="#" class="resources-button" onclick="toggleDropdown('resources-dropdown')">Resources</a>
+                        <ul id="resources-dropdown" class="dropdown-content"> 
+                            <li><a href="https://schoolsuite.co.ug"> School Pay </a></li>
+                            <li><a href="news-events.html"> News & Events </a></li>
+                           
+                        </ul>
+                </li>
+
+                <li class="events-b-sidebar" id="contact-b"><a href="contact-us.html" class="contact-button">Contact Us</a></li>
+            </ul>
+        </aside>
+    </header>
+    <main class="main-attraction">
+        <img class="front-img" src="PPS-images/Speech Day 12:1/Image 12-18-24 at 8.27 PM (4).jpg" alt="Premier Preparatory School">
+    </main>
+    <section class="infomatics">
+        <div class="intro-UI">
+            <div class="user-resources">
+                <a href="apply.html">  
+                    <button class="website-resources"> Apply </button>
+                </a>
+                <a href="news-events.html">  
+                    <button class="website-resources"> News and Events </button>
+                </a>
+                <a href="contact-us.html">  
+                    <button class="website-resources"> Contact Us</button>
+                </a>
+            </div>
+        </div>
+        <div class="welcome-message">
+            <div class="welcome-image-container">
+                <img class="welcome-img active" src="PPS-images/Speech Day 12:1/248A62E7-3B33-43B6-8160-D1CFA75B5455_1_201_a.jpeg" alt="PPS Festivities">
+                <img class="welcome-img" src="PPS-images/Speech Day 12:1/3E68B8C0-88EE-43B0-B63B-4ADC54D2E97A_1_201_a.jpeg" alt="PPS Festivities">
+                <img class="welcome-img" src="PPS-images/PPS-Football.jpeg" alt="PPS Football">
+                <img class="welcome-img" src="PPS-images/Speech Day 12:1/DD4A44CE-11DB-4F8C-B9AB-C585D963A5E0_1_201_a.jpeg" alt="PPS Facemasks">
+                <img class="welcome-img" src="PPS-images/Speech Day 12:1/39ABC5C2-303E-4422-A514-2F91911432AB_1_201_a.jpeg" alt="PPS Front">
+            </div>
+
+
+            <div class="welcome-text">
+                <h1 class="welcome-banner">Discover the GPPS Difference</h1>
+                <div class="first-info">
+                    <p class="welcome-paragraph">
+                        We are delighted to welcome you to our website, where you will find a wealth of information about Genesis and Premier Preparatory Schools (GPPS), our values and our commitment to nurturing young minds. At GPPS, we believe in providing a holistic education that goes beyond traditional academics. Our dedicated team of educators works tirelessly to create an engaging and supportive learning environment where every learner can thrive. Browse through and discover the incredible opportunities awaiting you and your child at GPPS, a blossoming institution dedicated to academic excellence, character development, and the cultivation of future leaders. Whether you're interested in our rigorous academic programs, diverse extracurricular activities, or our facilities, we invite you to explore all that GPPS has to offer and join our vibrant educational community.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="front-page-DW">
+        <div class="GPPS-section">
+            <div class="picture">
+                <img class="Student-pic" src="pps-images/Speech Day 12:1/BB0C703E-6CFF-444B-8256-DE107A4724DA_1_201_a.jpeg" alt="GPPS-Student">
+            </div>
+
+            <div class="GPPS-entry">
+                <h1>Welcome to GPPS</h1>
+                
+                <p>
+                    On behalf of the entire Genesis and Premier Preparatory Schools (GPPS) community, we warmly welcome you to our website! At GPPS, we are committed to fostering an environment of academic excellence, character development and innovation. Our core values of Honesty, Integrity, Innovation, Accountability and Excellence serve as the foundation upon which we build our community.
+                </p>
+
+                <h2>Our Mission</h2>
+                <ul>
+                    <li> <strong> Comprehensive Education: </strong>Provide a well-rounded education that equips learner with the knowledge, skills, and values necessary for success.</li>
+                    <li> <strong> Critical Thinking: </strong> Cultivate critical thinking, creativity, and problem-solving abilities.</li>
+                    <li> <strong> Character Building: </strong> Nurture compassionate, responsible, and confident individuals.</li>
+                </ul>
+
+                <h2>Why Choose GPPS?</h2>
+                <ul>
+                    <li> <strong> Experienced and Dedicated Faculty: </strong>  Our teachers are committed to guiding and inspiring each learner.</li>
+                    <li> <strong> Enhanced Learning Environments:</strong>  Spaces thoughtfully designed to enhance the educational journey of each learner. </li>
+                    <li> <strong> Diverse Extracurricular Activities: </strong> A wide range of programs to develop various talents and interests.</li>
+                    <li><strong> Strong Community Ties: </strong> We foster a supportive and engaged school community.</li>
+                </ul>
+
+                <h2>Explore Our Website</h2>
+                <ul>
+                    <li> <strong> Learn About Our Admissions Process: </strong> Find out how to enroll your child at GPPS.</li>
+
+                    <li> <strong> Access Parent Resources: </strong>  Find valuable tools, guides, and information to support your child's learning journey.</li>
+
+                    <li> <strong> Learn About Our School's History: </strong>Discover the journey of GPPS, our founding principles, and key milestones that have shaped our community.</li>
+
+                    <li> <strong> Stay Updated on School News and Events: </strong> Keep informed about the latest happenings at GPPS.</li>
+
+
+                </ul>
+
+                <div class="GPPS-signature">
+                    <p>Together, let's empower minds and shape futures!</p>
+                    <p> 
+                        Thank you for visiting our website. We look forward to welcoming you to the GPPS family.
+
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="news-events">
+        <div class="news">
+            <button class="w3-button w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+            <div class="mySlides">
+                <div class="readables">
+                        <div class="article" id="news-1">
+                            <a href="News-and-Events-Articles/GPPS Statement.html">
+                                <div class="article-img">
+                                    <img src="PPS-images/pps-logo 2.jpg" alt="PPS-logo">
+                                </div>
+                                <h1> GPPS Admin-Statement</h1>
+                                <p> 19/12/2024</p>
+                                <spana>Read More</span>
+                            </a>
+                        </div>
+                        <div class="article" id="news-2">
+                            <a href="News-and-Events-Articles/Speech-Day-Article.html">
+                                <div class="article-img">
+                                    <img src="PPS-images/Speech Day 12:1/8246228A-29FA-4F83-9E02-7D61F188820A_1_201_a.jpeg" alt="PPS-logo">
+                                </div>
+                                <h1>Speech Day Celebrations</h1>
+                                <p> 1/12/2024</p>
+                                <spana>Read More</span>
+                        </div>
+                    </div>
+
+            </div>
+
+            <div class="mySlides">
+                <div class="readables">
+
+                    <div class="article" id="news-3">
+                        <div class="article-img">
+                            <img src="PPS-images/pps-logo 2.jpg" alt="PPS-logo">
+                        </div>
+                        <h1>Say Hello to the new PPS Website slide 3</h1>
+                        <p>Updated dd/mm/yyyy</p>
+                        <a href="#">Read More</a>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        <button class="w3-button w3-display-right" onclick="plusDivs(+1)">&#10095;</button>
+        </div>
+    </section>
+    <footer class="footer">
+
+        
+        <div class="bottom-info">
+            <div class="bottom-imgs">
+
+                <img class="footer-img" src="PPS-images/pps-logo 2.png" alt="PPS-Logo">
+                <img class="UG-img" src="PPS-images/uganda-img.webp" alt="Republic of Uganda">
+
+            </div>
+
+            <div class="map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127659.6743579025!2d31.479396585833367!3d-0.863877632970657!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19d9e726975afb55%3A0xf5c705c6d52416f3!2sPremier%20Preparatory%20School%20-%20Sanje%20Kyotera!5e0!3m2!1sen!2sus!4v1722298588886!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+            </div>
+        </div>
+        <div class="key-links">
+            <nav>
+                <div class="footer-key-links">Key Links
+                    <ul>
+                        <li class="events-b-footer"><a href="director-welcome-page.html" class="about-button"> Director Welcome </a></li>
+                        <li class="events-b-footer"><a href="apply.html" class="news-events-button">Admissions</a></li>
+                        <li class="events-b-footer"><a href="https://schoolsuite.co.ug" class="pay-button"> School Pay </a></li>
+                        <li class="events-b-footer"><a href="contact-us.html" class="contact-button">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact-links"> 
+
+                    <div class="email-link">
+
+                        <h1 class="footer-contact-us-label"> Contact Us </h1>
+
+                        <div class="Accreditation">
+                            <a href="PPS REGISTRATION.pdf" download="PPS-REGISTRATION">  Accreditation and Registration</a>
+                         </div>
+
+                       <div class="phone-number"> Phone: +256-786-83-2025</div>
+                        
+                        <div class="email-address">
+                            Email: <a> premier.prep.sch@gmail.com</a>
+                        </div>
+
+                        <div class="PO-Box">
+                            Premier Preparatory School P.O. Box 335, Masaka. Uganda.
+                        </div>
+
+
+                    </div>
+
+                    <div class="footer-social-media-links">
+                        <a href="https://www.facebook.com/premier.preparatory.9" target="_blank"><img src="pps-images/facebook.png" alt="facebook-icon"></a>
+                        <a href="https://www.instagram.com/premierprepsch/" target="_blank"><img src="pps-images/instagram.png" alt="instagram-icon"></a>
+                        <a href="https://twitter.com/premierprep" target="_blank"><img src="pps-images/twitter.png" alt="twitter-icon"></a>
+                        <a href="https://www.youtube.com/premierprep" target="_blank"><img src="pps-images/youtube.png" alt="youtube-icon"></a>
+                    </div>
+
+                </div>
+            </nav>
+        </div>
+    </footer>
+    <script src="PPSJS.js"></script>
+</body>
+</html>

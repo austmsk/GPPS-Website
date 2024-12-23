@@ -1,0 +1,398 @@
+:root { 
+  --main-font: 'paragraph-font', sans-serif;
+  --header-font: 'header-font', sans-serif;
+  --button-font: 'button-font', sans-serif;
+
+  /* You can adjust these gradient colors for a subtler or stronger effect */
+  --gradient-start: #FF4B4B; /* Slightly lighter red for a modern look */
+  --gradient-end: #470000;
+
+  --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2),
+                0 6px 20px rgba(0, 0, 0, 0.19);
+
+  --content-background: #FFFFFF;
+  --content-radius: 10px; /* Add a uniform border radius variable */
+  --transition-speed: 0.3s; /* Consistent transition duration */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--main-font);
+  background-color: #f9f9f9; /* Slightly off-white background for contrast */
+}
+
+.background-div { 
+  /* Slight diagonal angle for a more dynamic look */
+  background: linear-gradient(45deg, var(--gradient-start), var(--gradient-end));
+  height: 60vh; /* Consider using min-height for more flexibility */
+  width: 100%;
+}
+
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #FFFFFF;
+  font-family: var(--button-font);
+  font-size: 1.1rem;
+  padding: 8px 12px;
+  border-radius: 50%;
+  transition: background-color var(--transition-speed), transform var(--transition-speed);
+}
+
+/* Subtle hover effect for the back button */
+.back-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+.front-page-attraction {
+  height: 500px;
+  min-height: 80vh;
+  position: relative;
+  padding-bottom: 70px;
+  /* If you find on smaller screens it's cutting off, consider removing fixed height or using min-height */
+}
+
+.content-div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 1200px;
+  min-height: 650px;
+  background-color: var(--content-background);
+  box-shadow: var(--box-shadow);
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  border-radius: var(--content-radius);
+}
+
+.content-div .picture-date,
+.content-div .information {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.content-div .picture-date {
+  padding-right: 10px;
+}
+
+.content-div .information {
+  padding-left: 10px;
+  justify-content: center;
+}
+
+.picture-date {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.title {
+  font-family: var(--header-font);
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  color: #222; /* Slightly darker text color */
+}
+
+.description {
+  font-family: var(--main-font);
+  font-size: 1rem;
+  line-height: 1.6;
+  text-align: justify;
+  padding-right: 20px;
+  color: #333;
+}
+
+.information {
+  flex: 1;
+  padding-left: 20px;
+}
+
+.pps-logo-div {
+  height: auto;
+  width: auto;
+  gap: 20px;
+}
+
+#pps-logo {
+  width: 100%;
+  height: auto;
+  max-width: 600px;
+}
+
+.related-news {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.first-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+  flex-wrap: wrap; /* Allows wrapping on smaller screens */
+}
+
+.creator-date {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  width: 100%;
+  justify-content: center;
+  padding-right: 20px;
+  flex-wrap: wrap; /* Allows wrapping on smaller screens */
+}
+
+.picture-date {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+#creator, 
+#date {
+  display: flex;
+  flex-direction: row;
+  margin: 5px;
+  align-items: center;
+  font-size: 1.2rem;
+  font-family: var(--header-font);
+  color: #444;
+}
+
+#date { 
+  margin-bottom: 15px;
+}
+
+.child-div {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 300px; /* This allows the .child-div to grow/shrink */
+  min-width: 250px;
+  /* Removed max-height so it can grow with content; if you want a limit, keep it or use a larger value */
+  justify-content: space-around;
+  background-color: var(--content-background);
+  box-shadow: var(--box-shadow);
+  margin-bottom: 20px;
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+  object-fit: contain;
+  border-radius: var(--content-radius);
+  overflow: hidden; /* Helps keep rounded corners for images */
+}
+
+.child-div:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.img-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px; /* Space between image and text */
+  width: 100%;
+  aspect-ratio: 16 / 9; 
+  position: relative; 
+}
+
+.img-div img {
+  /* Force a responsive size for images, 
+     removing strict fixed height ensures better responsiveness */
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* or 'contain' if you prefer letterboxing */
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.link-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Horizontally center items */
+  gap: 10px;
+  text-align: center;
+  margin-top: auto; /* Push link-info to bottom of .child-div if there's extra space */
+}
+
+.link-info a {
+  font-family: var(--header-font);
+  font-size: 1.2rem;
+  color: #000;
+  text-decoration: none;
+  transition: color var(--transition-speed);
+}
+
+/* Slight hover color change for links */
+.link-info a:hover {
+  color: #e60000; /* or any accent color you'd like */
+}
+
+.link-info p {
+  font-family: var(--main-font);
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #555;
+}
+
+.link-info p span {
+  font-size: 1.2rem;
+}
+
+/* ---------------------- TABLET & MEDIUM SCREENS ---------------------- */
+@media screen and (max-width: 768px) {
+
+  .front-page-attraction {
+    height: auto;         /* Let the section adjust naturally */
+    min-height: 60vh;     /* Keep a minimum height */
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+  }
+
+  .background-div { 
+    height: 50vh;         /* Adjust if 60vh is too tall on tablets */
+  }
+
+  .content-div {
+    width: 80%;
+    height: auto;
+    min-height: 300px;
+    top: 80%;
+    flex-direction: column;
+    padding: 15px;
+  }
+
+  .picture-date,
+  .information {
+    width: 100%;
+    padding-left: 0;
+  }
+
+  .picture-date {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .creator-date {
+    justify-content: space-around;
+    padding-right: 0;
+  }
+
+  .first-row {
+    flex: 1 1 100%;
+    width: 100%;
+    justify-content: space-around;
+  }
+
+  /* Adjust the .child-div to fit two columns on tablet size */
+  .child-div {
+    flex: 1 1 calc(50% - 10px);
+    max-width: calc(50% - 10px);
+    /* Remove forced height so content can flow freely */
+    height: auto;
+  }
+
+  /* If you specifically want the 3rd item to be full-width, you can keep or remove this */
+  .child-div:nth-child(3) {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  #pps-logo {
+    max-width: 400px;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .description {
+    font-size: 0.9rem;
+    padding-right: 10px;
+  }
+
+  #creator, 
+  #date {
+    font-size: 1rem;
+  }
+
+  .related-news {
+    margin-top: 280px;
+  }
+
+  /* Optionally scale images down a bit more on tablets */
+  .img-div img {
+    max-height: 250px; /* or any suitable max height */
+    object-fit: cover;
+  }
+}
+
+/* ---------------------- MOBILE & SMALL SCREENS ---------------------- */
+@media screen and (max-width: 480px) {
+
+  .front-page-attraction {
+    min-height: 50vh;
+  }
+
+  .background-div {
+    height: 35vh; /* Adjust if needed */
+  }
+
+  .content-div {
+    width: 95%;
+    padding: 15px;
+    top: 99%;
+  }
+
+  .related-news {
+    padding: 15px;
+    margin-top: 380px; /* Adjust if there's too much white space */
+  }
+
+  .back-button { 
+    z-index: 100;
+  }
+
+  .child-div {
+    flex: 1 1 100%; /* Single column on smaller screens */
+    max-width: 100%;
+    height: auto;   /* Let it expand naturally */
+  }
+
+  #creator, #date {
+    font-size: 1rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .description {
+    font-size: 0.9rem;
+  }
+
+  /* Restrict image height more on small phones */
+  .img-div img {
+    max-height: 200px;
+  }
+}

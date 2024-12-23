@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="pps-styles/admin.css">
+    <title>Admin Submissions</title>
+</head>
+<body>
+    <h1>Submissions</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Relationship</th>
+                <th>Contact Method</th>
+                <th>Subject</th>
+                <th>Question</th>
+                <th>Consent</th>
+            </tr>
+        </thead>
+        <tbody id="submissions-table">
+        </tbody>
+    </table>
+
+    <script>
+fetch('/admin/submissions')
+    .then(response => response.json())
+    .then(data => {
+        console.log('Received data:', data); // Log the received data
+        const tableBody = document.getElementById('submissions-table');
+        data.forEach(submission => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${submission.firstName}</td>
+                <td>${submission.lastName}</td>
+                <td>${submission.email}</td>
+                <td>${submission.phoneNumber}</td>
+                <td>${submission.relationship}</td>
+                <td>${submission.contactMethod}</td>
+                <td>${submission.subject}</td>
+                <td>${submission.question}</td>
+                <td>${submission.consent}</td>
+            `;
+            tableBody.appendChild(row);
+        });
+    })
+    .catch(error => console.error('Error:', error));
+    </script>
+</body>
+</html>

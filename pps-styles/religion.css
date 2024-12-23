@@ -1,0 +1,145 @@
+/* -------------------------
+   Global Reset / Basic Setup
+-------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  color: #333;
+   /* Soft background color */
+}
+
+/* -------------------------
+   Main Container
+-------------------------- */
+main {
+  max-width: 1200px; /* Restrict width on larger screens */
+  margin: 0 auto;
+  margin-top: 125px;
+  margin-bottom: 50px;
+  padding: 20px;
+  background-color: #fff; /* White background */
+  border-radius: 8px; /* Slightly rounded corners */
+}
+
+
+
+/* -------------------------
+   Image Container & Caption
+-------------------------- */
+.religion-img {
+  text-align: center;
+  margin-bottom: 20px; /* Add spacing below the image */
+}
+
+.religion-img img {
+  max-width: 100%; /* Responsive image */
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+}
+
+figcaption {
+  text-align: center;
+  font-style: italic;
+  color: #666;
+  margin-bottom: 30px; 
+}
+
+/* -------------------------
+   Section / Column Layout
+-------------------------- */
+section {
+  display: flex; 
+  gap: 20px; /* Space between columns */
+}
+
+/*
+  If you'd like to use a 3-column grid layout instead, you can comment out 
+  the 'display: flex' line above and use the grid properties below:
+  
+  section {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr; 
+    gap: 20px;
+  }
+*/
+
+.left-R-side, 
+.right-R-side {
+  flex: 1;
+  /* You can add background or placeholders as needed */
+}
+
+.middle-R-side {
+  flex: 2; 
+  /* Takes up more space than left & right sides */
+}
+
+/* -------------------------
+   Typography & Lists
+-------------------------- */
+.middle-R-side h2 {
+  margin-bottom: 15px;
+  color: #444;
+  font-size: 1.6rem;
+}
+
+.middle-R-side h3 {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  color: #444;
+  font-size: 1.3rem;
+}
+
+.middle-R-side p {
+  margin-bottom: 15px;
+}
+
+ul {
+  margin-bottom: 15px;
+  padding-left: 20px; /* Indent list items a bit */
+}
+
+.religion-BP li {
+  list-style: disc;
+  margin-bottom: 5px;
+}
+
+/* -------------------------
+   Responsive Tweaks
+-------------------------- */
+@media screen and (max-width: 768px) {
+  section {
+    flex-direction: column;
+    /* If using grid, override with 1 column:
+    grid-template-columns: 1fr;
+    */
+  }
+
+  .left-R-side, 
+  .middle-R-side, 
+  .right-R-side {
+    flex: none;
+    width: 100%;
+  }
+
+  .religion-img img {
+    max-width: 90%; /* Slightly narrower on tablets if desired */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  main {
+    padding: 15px; /* A bit less padding on very small screens */
+  }
+
+  .religion-img img {
+    max-width: 100%;
+  }
+}

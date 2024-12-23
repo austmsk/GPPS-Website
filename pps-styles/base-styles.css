@@ -1,0 +1,37 @@
+@font-face {
+    font-family: header-font;
+    src: url(Rajdhani-Variable.ttf);
+}
+
+@font-face {
+    font-family: button-font;
+    src: url(Chillax-Variable.ttf);
+}
+
+@font-face {
+    font-family: paragraph-font;
+    src: url(GeneralSans-Variable.ttf);
+}
+
+@font-face {
+    font-family: news-header-font;
+    src: url(Boska-Light.ttf);
+}
+
+@font-face {
+    font-family: news-paragraph-font;
+    src: url(GeneralSans-Variable.ttf);
+}
+
+@font-face {
+    font-family: news-author-font;
+    src: url(Boska-Variable.ttf);
+}
+
+
+body { 
+    margin: 0;
+    padding: 0;
+}
+
+

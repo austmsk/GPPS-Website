@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="icon" href="pps-images/pps-logo 2.png" type="image/icon type">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="PPS-styles/base-styles.css">
+    <link rel="stylesheet" href="PPS-styles/header-footer.css">
+    <link rel="stylesheet" href="pps-styles/contact-us.css">
+</head>
+<body>
+    <!-- Header Details -->
+    <header class="header">
+        <div class="header-gradient"></div>
+        <div class="header-content">
+            <!-- School Logo and Header -->
+            <div class="random-img-logo">
+                <img class="random-logo" src="PPS-images/pps-logo 2.png" alt="Premier Preparatory School Logo">
+                <div class="written-logo-link">
+                    <a class="written-logo" href="home-page.html">Premier Preparatory School</a>
+                </div>
+            </div>
+            <!-- Header Menu Options -->
+            <nav class="left-side">
+                <ul class="menu-options">
+                    <li class="events-b about">
+                        <a href="#" class="about-button">About Us
+                            <span class="material-icons dropdown-icon">arrow_drop_down</span>
+                        </a>
+                        <ul class="drop-down">
+                            <li><a class="drop-down-link" href="director-welcome-page.html">Welcome from Director</a></li>
+                            <li><a class="drop-down-link" href="Religon.html"> Religous Affiliation </a></li>
+                            <li><a class="drop-down-link" href="mission-and-vision.html">Mission & Vision</a></li>
+                            <li><a class="drop-down-link" href="history.html">Our History</a></li>
+                        </ul>
+                    </li>
+                    <li class="events-b about">
+                        <a href="#" class="about-button">Admissions
+                            <span class="material-icons dropdown-icon">arrow_drop_down</span>
+                        </a>
+                        <ul class="drop-down">
+                            <li><a class="drop-down-link" href="apply.html">Apply</a></li>
+                            <li><a class="drop-down-link" href="fees-structure.html">Fees Structure</a></li>
+                            <li><a class="drop-down-link" href="transportation.html">Transportation</a></li>
+                        </ul>
+                    </li>
+                    <li class="events-b about">
+                        <a href="#" class="about-button">Resources
+                            <span class="material-icons dropdown-icon">arrow_drop_down</span>
+                        </a>
+                        <ul class="drop-down">
+                            <li><a class="drop-down-link" href="https://schoolsuite.co.ug">School Pay</a></li>
+                            <li><a class="drop-down-link" href="news-events.html">News & Events</a></li>
+                        </ul>
+                    </li>
+                    <li class="events-b"><a href="#" class="contact-button">Contact Us</a></li>
+                </ul>
+            </nav>
+            <!-- "Show Sidebar" selector img w/ javascript -->
+            <div class="menu-selection" onclick="showSidebar()">
+                <svg class="menu-button" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
+                    <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/>
+                </svg>
+            </div>
+        </div>
+        <!-- Sidebar Details -->
+        <aside class="sidebar">
+            <!-- "Hide Sidebar" selector img w/ javascript -->
+            <div class="x-button" onclick="hideSidebar()">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
+                    <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
+                </svg>
+            </div>
+            <!-- Sidebar Menu Options -->
+            <ul class="menu-options-sidebar">
+                <li class="events-b-sidebar">
+                    <a href="#" class="about-button" onclick="toggleDropdown('about-dropdown')">About Us</a>
+                        <ul id="about-dropdown" class="dropdown-content">
+                            <li id="director-w-l"><a href="director-welcome-page.html" id="director-w-a"> Welcome from the Director </a></li>
+                            <li><a href="Religon.html"> Religous Affiliation </a></li>
+                            <li><a href="mission-and-vision.html"> Mission & Vision </a></li>
+                            <li><a href="history.html"> Our History </a></li>
+                        </ul>
+                </li>
+                <li class="events-b-sidebar">
+                    <a href="#" class="admissions-button" onclick="toggleDropdown('admissions-dropdown')">Admissions</a>
+                        <ul id="admissions-dropdown" class="dropdown-content">
+                            <li><a href="#"> Apply </a></li>
+                            <li><a href="#"> Fees Structure </a></li>
+                            <li><a href="#"> Transportation </a></li>
+                        </ul>
+                </li>
+                <li class="events-b-sidebar">
+                    <a href="#" class="resources-button" onclick="toggleDropdown('resources-dropdown')">Resources</a>
+                        <ul id="resources-dropdown" class="dropdown-content">
+                            <li><a href="https://schoolsuite.co.ug"> School Pay </a></li>
+                            <li><a href="#"> News & Events </a></li>
+                        </ul>
+                </li>
+
+                <li class="events-b-sidebar" id="contact-b"><a href="contact-us.html" class="contact-button">Contact Us</a></li>
+            </ul>
+        </aside>
+    </header>
+
+    <section class="contact-form">
+        <section class="questionare-pps-contact">
+            <form action="/submit_contact_form" method="post">
+                <div class="user-inputs">
+                    <div class="parent-student">
+                        <label for="designation"> Relationship to the School </label>
+                        <select name="relationship" id="designation" required>
+                            <option value="Prospective Student">Prospective Student</option>
+                            <option value="Current Student">Current Student</option>
+                            <option value="Parent/Guardian">Parent/Guardian</option>
+                            <option value="Staff">Staff</option>
+                            <option value="Alumni">Alumni</option>
+                        </select>
+                    </div>
+                    <div class="name">
+                        <label id="name-tag" for="F-N">What is your name?</label>
+                        <div class="credentials-div">
+                            <input type="text" placeholder="First Name" id="F-N" name="first-name" required>
+                            <input type="text" placeholder="Last Name" id="L-N" name="last-name" required>
+                        </div>
+                    </div>
+                    <div class="contact-data">
+                        <label for="email">How can we contact you?</label>
+                        <div class="credentials-div">
+                            <input type="email" placeholder="Email" id="email" name="email" required>
+                            <input type="tel" placeholder="Phone Number" id="phone-number" name="phone-number">
+                        </div>
+                    </div>
+                    <div class="student-demographics">
+                        <fieldset>
+                            <legend class="legend-label"> Preferred Method of Contact </legend>
+                            <div class="contact-method-selection">
+                                <input type="radio" name="contact-method" id="email-contact" value="EMAIL" required>
+                                <label for="email-contact">Email</label>
+                            </div>
+                            <div class="contact-method-selection">
+                                <input type="radio" name="contact-method" id="phone-contact" value="PHONE" required>
+                                <label for="phone-contact">Phone</label>
+                            </div>
+                        </fieldset>
+                        <label for="subject-inquiry"> Subject of Inquiry </label>
+                        <div class="credentials-div">
+                            <select name="subject" id="subject-inquiry" required>
+                                <option value="Admissions">Admissions</option>
+                                <option value="Academics">Academics</option>
+                                <option value="Events">Events</option>
+                                <option value="General Inquiry">General Inquiry</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="inquire">
+                        <textarea name="question" id="question" placeholder="Type your question here" required></textarea>
+                    </div>
+                    <div class="sub-but">
+                        <label id="privacy-statement">
+                            <input id="privacy-agree" type="checkbox" name="consent" required>
+                            &#160; I agree to the school's privacy policy and consent to my data being collected and used for the purpose of responding to my inquiry.
+                        </label><br><br>
+
+                        <button class="submit-button" type="submit">SUBMIT</button>
+                    </div>
+                </div>
+            </form>
+            <div class="pps-contact-map">
+                <div class="pps-contact">
+                    <div class="phone">
+                        <h1 class="header-1"> Phone </h1>
+                        <p class="phone"> +256-752-2543</p>
+                        <h2 class="header-2"> Email </h2>
+                        <p class="email "> pps@ppsacademics.com </p>
+                    </div>
+                    <div class="address">
+                        <h3 class="header-3"> Visit Us </h3>
+                        <p class="address"> Sanje Boulevard </p>
+                    </div>
+                </div>
+
+                <div class="map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127659.6743579025!2d31.479396585833367!3d-0.863877632970657!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19d9e726975afb55%3A0xf5c705c6d52416f3!2sPremier%20Preparatory%20School%20-%20Sanje%20Kyotera!5e0!3m2!1sen!2sus!4v1722298588886!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- Show/Hide Sidebar JavaScript -->
+    <script>
+        function showSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            const menuButton = document.querySelector('.menu-button');
+            sidebar.style.display = 'flex';
+            menuButton.style.display = 'none';
+        }
+
+        function hideSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            const menuButton = document.querySelector('.menu-button');
+            sidebar.style.display = 'none';
+            menuButton.style.display = 'block';
+        }
+
+        function toggleDropdown(dropdownID) {
+            var dropdown = document.getElementById(dropdownID);
+            dropdown.classList.toggle('open');
+        }
+    </script>
+</body>
+</html>

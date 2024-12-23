@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html> 
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width initial-scale=1.0">
+        <title> Our History </title>
+        <link rel="icon" href="pps-images/pps-logo 2.png" type="image/icon type">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet">
+        
+        <link rel="stylesheet" href="PPS-styles/base-styles.css">
+        <link rel="stylesheet" href="PPS-styles/header-footer.css">
+        <link rel="stylesheet" href="PPS-styles/history.css">
+
+    </head>
+    <body>
+                   <!-- Header Details -->
+    <header class="header">
+        <div class="header-gradient"></div>
+        <div class="header-content">
+
+            <!-- School Logo and Header -->
+            <div class="random-img-logo">
+                <img class="random-logo" src="PPS-images/pps-logo 2.png" alt="Premier Preparatory School Logo">
+
+                <div class="written-logo-link"> <a class="written-logo" href="home-page.html"> Premier Preparatory School </a> </div>
+            </div>
+
+            <!-- Header Menu Options -->
+            <nav class="left-side">
+                <ul class="menu-options">
+                    <li class="events-b about">
+                        <a href="#" class="about-button">About Us
+                            <span class="material-icons dropdown-icon">
+                                arrow_drop_down
+                                </span>
+                        </a>
+                            <ul class="drop-down">
+                                <li> <a class="drop-down-link" href="director-welcome-page.html"> Welcome from Director </a> </li> 
+                                <li> <a class="drop-down-link" href="mission-and-vision.html"> Mission & Vision  </a></li>
+                                <li> Our History </li>
+                            </ul>
+                    
+                    </li>
+                    <li class="events-b about">
+                        <a href="#" class="about-button"> Admissions
+                            <span class="material-icons dropdown-icon">
+                                arrow_drop_down
+                                </span>
+                        </a>
+                            <ul class="drop-down">
+                                <li> <a class="drop-down-link" href="apply.html"> Apply </a> </li> 
+                                <li> <a class="drop-down-link" href="fees-structure.html"> Fees Structure </a> </li>
+                                <li> <a class="drop-down-link" href="transportation.html"> Transportation </a> </li>
+                            </ul>
+                    
+                    </li>
+                    <li class="events-b about">
+                        <a href="#" class="about-button"> Resources
+                            <span class="material-icons dropdown-icon">
+                                arrow_drop_down
+                                </span>
+                        </a>
+                            <ul class="drop-down">
+                                <li> <a class="drop-down-link" href="https://schoolsuite.co.ug"> School Pay </a> </li> 
+                                <li> <a class="drop-down-link" href="news-and-events.html"> New & Events </a> </li>
+                            </ul>
+                    
+                    </li>
+                    <li class="events-b"><a href="contact-us.html" class="contact-button">Contact Us</a></li>
+                </ul>
+            </nav>
+                <!-- "Show Sidebar" selector img w/ javascript -->
+                <div class="menu-selection" onclick="showSidebar()">
+                    <svg class="menu-button" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
+                        <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/>
+                    </svg>
+                </div>
+        </div>
+
+        <!-- Sidebar Details -->
+        <aside class="sidebar">
+            <!-- "Hide Sidebar" selector img w/ javascript -->
+            <div class="x-button" onclick="hideSidebar()">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
+                    <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
+                </svg>
+            </div>
+            <!-- Sidebar Menu Options -->
+            <ul class="menu-options-sidebar">
+                <li class="events-b-sidebar">
+                    <a href="#" class="about-button" onclick="toggleDropdown('about-dropdown')">About Us</a>
+                        <ul id="about-dropdown" class="dropdown-content"> 
+                            <li id="director-w-l"><a href="director-welcome-page.html" id="director-w-a"> Welcome from the Director </a></li>
+                            <li><a href="mission-and-vision.html"> Mission & Vision </a></li>
+                            <li><a href="history.html"> Our History </a></li>
+                        </ul>
+                </li>
+                <li class="events-b-sidebar">
+                    <a href="#" class="admissions-button" onclick="toggleDropdown('admissions-dropdown')">Admissions</a>
+                        <ul id="admissions-dropdown" class="dropdown-content"> 
+                            <li><a href="apply.html"> Apply </a></li>
+                            <li><a href="fees-structure.html"> Fees Structure </a></li>
+                            <li><a href="transportation.html"> Transportation </a></li>
+                        </ul>
+                </li>
+                <li class="events-b-sidebar">
+                    <a href="#" class="resources-button" onclick="toggleDropdown('resources-dropdown')">Resources</a>
+                        <ul id="resources-dropdown" class="dropdown-content"> 
+                            <li><a href="https://schoolsuite.co.ug"> School Pay </a></li>
+                            <li><a href="#"> News & Events </a></li>
+                           
+                        </ul>
+                </li>
+
+                <li class="events-b-sidebar" id="contact-b"><a href="contact-us.html" class="contact-button">Contact Us</a></li>
+            </ul>
+        </aside>
+    </header>
+
+        <section class="history-section">
+            <div class="left-side"></div>
+
+            <div class="history-text-container">
+
+                
+                            <p class="history-text"> 
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus mauris lobortis urna ultrices, in maximus tortor sollicitudin. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vestibulum sem purus, aliquam sit amet tincidunt sed, maximus et nibh. Vivamus mi lorem, elementum et dui ac, luctus venenatis lorem. Duis mollis justo nec massa tempus accumsan. Cras vel placerat ante. Praesent augue libero, sollicitudin et arcu eu, consectetur malesuada nisi. Mauris fringilla risus vitae nisl fermentum, non porttitor est sagittis. Fusce id venenatis tortor, eget tempus erat. In hac habitasse platea dictumst. Ut vel lacus dolor. Donec quis efficitur nisi. Praesent pulvinar, tortor sit amet blandit vestibulum, sapien nisi egestas nibh, nec elementum odio nunc eget enim.
+                
+                            </p>
+                
+                            <p class="history-text">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus mauris lobortis urna ultrices, in maximus tortor sollicitudin. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vestibulum sem purus, aliquam sit amet tincidunt sed, maximus et nibh. Vivamus mi lorem, elementum et dui ac, luctus venenatis lorem. Duis mollis justo nec massa tempus accumsan. Cras vel placerat ante. Praesent augue libero, sollicitudin et arcu eu, consectetur malesuada nisi. Mauris fringilla risus vitae nisl fermentum, non porttitor est sagittis. Fusce id venenatis tortor, eget tempus erat. In hac habitasse platea dictumst. Ut vel lacus dolor. Donec quis efficitur nisi. Praesent pulvinar, tortor sit amet blandit vestibulum, sapien nisi egestas nibh, nec elementum odio nunc eget enim.
+                
+                            </p>
+                
+                            <p class="history-text">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus mauris lobortis urna ultrices, in maximus tortor sollicitudin. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vestibulum sem purus, aliquam sit amet tincidunt sed, maximus et nibh. Vivamus mi lorem, elementum et dui ac, luctus venenatis lorem. Duis mollis justo nec massa tempus accumsan. Cras vel placerat ante. Praesent augue libero, sollicitudin et arcu eu, consectetur malesuada nisi. Mauris fringilla risus vitae nisl fermentum, non porttitor est sagittis. Fusce id venenatis tortor, eget tempus erat. In hac habitasse platea dictumst. Ut vel lacus dolor. Donec quis efficitur nisi. Praesent pulvinar, tortor sit amet blandit vestibulum, sapien nisi egestas nibh, nec elementum odio nunc eget enim.
+                            </p>
+
+            </div>
+
+
+            <div class="right-side"></div>
+
+
+    </section>
+
+    <footer class="footer">
+
+        
+        <div class="bottom-info">
+            <div class="bottom-imgs">
+
+                <img class="footer-img" src="PPS-images/pps-logo 2.png" alt="PPS-Logo">
+                <img class="UG-img" src="PPS-images/uganda-img.webp" alt="Republic of Uganda">
+
+            </div>
+
+            <div class="map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127659.6743579025!2d31.479396585833367!3d-0.863877632970657!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19d9e726975afb55%3A0xf5c705c6d52416f3!2sPremier%20Preparatory%20School%20-%20Sanje%20Kyotera!5e0!3m2!1sen!2sus!4v1722298588886!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+            </div>
+        </div>
+        <div class="key-links">
+            <nav>
+                <div class="footer-key-links">Key Links
+                    <li class="events-b-footer"><a href="director-welcome-page.html" class="about-button">Director Welcome</a></li>
+                    <li class="events-b-footer"><a href="apply.html" class="news-events-button">Admissions</a></li>
+                    <li class="events-b-footer"><a href="https://schoolsuite.co.ug" class="pay-button"> School Pay </a></li>
+                    <li class="events-b-footer"><a href="contact-us.html" class="contact-button">Contact Us</a></li>
+                </div>
+            </nav>
+        </div>
+    </footer>
+
+                <!-- Show/Hide Sidebar javascript -->
+                <script src="PPSJS.js"></script>
+    </body>
+</html>
