@@ -288,16 +288,16 @@
                 });
     
                 if (response.ok) {
-                    alert("Form submitted successfully!");
-                    form.reset();
+                    // Redirect to redirecting.html after successful submission
+                    window.location.href = "/redirecting.html";
                 } else {
-                    alert("Failed to submit the form. Please try again.");
+                    alert("Submission failed. Please try again.");
                 }
             } catch (error) {
                 console.error("Error submitting form:", error);
                 alert("An error occurred. Please try again later.");
             }
         });
-    </script>
+    </script>    
 </body>
 </html>
