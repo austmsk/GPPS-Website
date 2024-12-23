@@ -3,7 +3,7 @@
     { "source": "/", "destination": "/home-page.html", "permanent": true }
   ],
   "rewrites": [
-    { "source": "/home-page.css", "destination": "/pps-style/home-page.css" }
+    { "source": "/home-page-info.css", "destination": "/pps-styles/home-page.css" }
   ]
 }
 
