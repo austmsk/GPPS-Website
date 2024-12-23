@@ -1,5 +1,12 @@
 {
   "redirects": [
     { "source": "/", "destination": "/home-page.html", "permanent": true }
-  ]
+  ],
+  "rewrites": [
+    { "source": "/styles.css", "destination": "/public/styles.css" }
+  ],
+  "static": {
+    "public": "public"
+  }
 }
+
