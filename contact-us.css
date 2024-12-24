@@ -75,7 +75,7 @@ label, legend {
     margin: 100px 0;
     height: calc(100vh - 100px);
     max-width: 100%;
-    margin-top: 200px;
+    margin-top: 250px;
 }
 
 .parent-student, .name, .contact-data, .student-demographics {
