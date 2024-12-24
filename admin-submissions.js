@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const { decrypt } = require('../encryption');
+const { decrypt } = require('encryption');
 
 export default function handler(req, res) {
     if (req.method === 'GET') {

@@ -188,7 +188,7 @@
 
     <section class="contact-form">
         <section class="questionare-pps-contact">
-            <form action="/submit-contact-form" method="post">
+            <form action="submit-contact-form" method="post">
                 <div class="user-inputs">
                     <div class="parent-student">
                         <label for="designation"> Relationship to the School </label>
@@ -289,7 +289,7 @@
     
                 if (response.ok) {
                     // Redirect to redirecting.html after successful submission
-                    window.location.href = "/redirecting.html";
+                    window.location.href = "redirecting.html";
                 } else {
                     alert("Submission failed. Please try again.");
                 }

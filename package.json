@@ -1,17 +1,16 @@
 {
   "name": "pps-website",
   "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
+  "description": "A school website with contact form functionality",
+  "main": "index.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "vercel dev"
   },
-  "author": "",
+  "author": "Your Name",
   "license": "ISC",
   "dependencies": {
     "@vercel/analytics": "^1.4.1",
     "body-parser": "^1.19.0",
-    "dotenv": "^16.4.7",
     "express": "^4.21.2"
   }
 }
