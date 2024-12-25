@@ -13,8 +13,8 @@
   ],
   "rewrites": [
     {
-      "source": "/:path*",
-      "destination": "/public/:path*"
+      "source": "/images/:path*",
+      "destination": "/public/images/:path*"
     }
   ]
 }
