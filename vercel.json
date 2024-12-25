@@ -1,6 +1,6 @@
 {
   "redirects": [
-    { "source": "/", "destination": "/home-page.html", "permanent": true }
+    { "source": "/", "destination": "/src/home-page.html", "permanent": true }
   ],
   "rewrites": [],
   "headers": [
