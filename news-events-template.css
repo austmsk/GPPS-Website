@@ -105,9 +105,10 @@ body {
   margin: 20px 0;
 }
 
-.header .author {
+.header .author, .date {
   font-family: var(--news-author-font);
   font-size: clamp(1em, 3vw, 1.2em);
+  margin: 12px;
 }
 
 .content {
