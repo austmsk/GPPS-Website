@@ -79,6 +79,7 @@
     .director-img {
         max-width: 600px;
         margin: 0 auto;
+        margin-top: 20px;
     }
 }
 
@@ -89,6 +90,10 @@
     
     .thesis-text {
         padding: 0 var(--spacing-sm);
+    }
+
+    .director-img { 
+        margin-top: 40px;
     }
 }
 
