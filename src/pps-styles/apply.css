@@ -1,3 +1,40 @@
+:root {
+    --main-font: 'paragraph-font', sans-serif;
+    --header-font: 'header-font', sans-serif;
+    --button-font: 'button-font', sans-serif;
+    --primary-color: #FFD700;
+    --background-color: white;
+    --secondary-color: black;
+    --highlight-color: orange;
+    --gradient-start: #FF0000;
+    --gradient-end: #470000;
+    --padding-small: 0.5rem;
+}
+
+body {
+    font-family: var(--main-font);
+    line-height: 1.6;
+    color: var(--secondary-color);
+    background-color: var(--background-color);
+    margin: 0;
+    padding: 0;
+}
+
+
+section {
+    max-width: 100%;
+    margin: 100px auto 50px;
+    padding: clamp(10px, 3vw, 20px);
+}
+
+
+section div {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+
+}
+
+
 /* Apply Section Layout */
 .apply-section {
     display: flex;
@@ -87,7 +124,7 @@ a:hover {
         padding-top: 60px;
     }
     
-    .left-side, .right-side {
+    .left-space-side, .right-space-side {
         display: none;
     }
     

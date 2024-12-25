@@ -1,3 +1,37 @@
+:root {
+  --main-font: 'paragraph-font', sans-serif;
+  --header-font: 'header-font', sans-serif;
+  --button-font: 'button-font', sans-serif;
+  --primary-color: #FFD700;
+  --background-color: white;
+  --secondary-color: black;
+  --highlight-color: orange;
+  --gradient-start: #FF0000;
+  --gradient-end: #470000;
+  --padding-small: 0.5rem;
+}
+
+body {
+  font-family: var(--main-font);
+  line-height: 1.6;
+  color: var(--secondary-color);
+  background-color: var(--background-color);
+  margin: 0;
+  padding: 0;
+}
+
+section {
+  max-width: 100%;
+  margin: 50px auto 50px;
+  padding: clamp(10px, 3vw, 20px);
+}
+
+section div {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+
+}
+
 /* -------------------------
    Global Reset / Basic Setup
 -------------------------- */
@@ -5,13 +39,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-body {
-  font-family: 'Arial', sans-serif;
-  line-height: 1.6;
-  color: #333;
-   /* Soft background color */
 }
 
 /* -------------------------
@@ -58,17 +85,7 @@ section {
   display: flex; 
   gap: 20px; /* Space between columns */
 }
-
-/*
-  If you'd like to use a 3-column grid layout instead, you can comment out 
-  the 'display: flex' line above and use the grid properties below:
   
-  section {
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr; 
-    gap: 20px;
-  }
-*/
 
 .left-R-side, 
 .right-R-side {
@@ -110,6 +127,16 @@ ul {
   list-style: disc;
   margin-bottom: 5px;
 }
+
+
+h1 {
+  font-family: var(--header-font);
+  color: var(--gradient-start);
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+}
+
 
 /* -------------------------
    Responsive Tweaks
