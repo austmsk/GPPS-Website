@@ -1,10 +1,14 @@
 {
   "redirects": [
-    { "source": "/", "destination": "/home-page.html", "permanent": true }
+    { "source": "/", "destination": "/home-info.html", "permanent": true }
   ],
-  "rewrites": [
-    { "source": "/home-page-info.css", "destination": "/pps-styles/home-page.css" }
+  "rewrites": [],
+  "headers": [
+    {
+      "source": "/(.*).(css|js)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    }
   ]
 }
-
-
