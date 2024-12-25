@@ -5,7 +5,7 @@
   "rewrites": [
     {
       "source": "/images/:path*",
-      "destination": "../public/images/:path*"
+      "destination": "../public/:path*"
     }
   ],
   "headers": [
