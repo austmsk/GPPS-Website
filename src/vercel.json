@@ -4,7 +4,7 @@
   ],
   "rewrites": [
     {
-      "source": "/images/:path*",
+      "source": ":path*",
       "destination": "../public/:path*"
     }
   ],
