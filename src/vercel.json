@@ -2,12 +2,6 @@
   "redirects": [
     { "source": "/", "destination": "/home-page.html", "permanent": true }
   ],
-  "rewrites": [
-    {
-      "source": ":path*",
-      "destination": "../public/:path*"
-    }
-  ],
   "headers": [
     {
       "source": "/(.*).(css|js)",
