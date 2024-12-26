@@ -2,13 +2,13 @@
   "redirects": [
     {
       "source": "/",
-      "destination": "/home-page.html",
+      "destination": "/src/home-page.html",
       "permanent": true
     }
   ],
   "headers": [
     {
-      "source": "/(.*)\\.(css|js)$",
+      "source": "/(.*)\\.(jpg|png|gif|svg|webp|css|js)$",
       "headers": [
         {
           "key": "Cache-Control",
