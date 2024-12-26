@@ -2,7 +2,7 @@
   "redirects": [
     {
       "source": "/",
-      "destination": "/src/home-page.html",
+      "destination": "home-page.html",
       "permanent": true
     }
   ],
