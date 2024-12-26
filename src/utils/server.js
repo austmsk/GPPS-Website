@@ -1,4 +1,5 @@
 require('dotenv').config();
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const fs = require('fs');
@@ -14,6 +15,7 @@ app.use(bodyParser.json());
 
 // Serve static files like CSS
 app.use('/pps-styles', express.static(path.join(__dirname, '..', 'pps-styles')));
+app.use('/images', express.static(path.join(__dirname, '..', 'images')));
 
 // Sanitize inputs
 const sanitize = (str) => str.replace(/[<>\\/]/g, '');
