@@ -1,26 +1,36 @@
+const { encrypt } = require('./encryption'); // Import the encryption function
+
+const submissions = []; // Temporary in-memory storage
+
 export default function handler(req, res) {
-  if (req.method === 'POST') {
-      const formData = req.body;
+    if (req.method === 'POST') {
+        const formData = req.body;
 
-      const encryptedData = {
-          relationship: formData.relationship,
-          firstName: encrypt(formData['first-name']),
-          lastName: encrypt(formData['last-name']),
-          email: encrypt(formData['email']),
-          phoneNumber: encrypt(formData['phone-number']),
-          contactMethod: formData['contact-method'],
-          subject: formData.subject,
-          question: encrypt(formData.question),
-          consent: formData.consent
-      };
+        // Validate input data
+        if (!formData['first-name'] || !formData['last-name'] || !formData.email || !formData.question) {
+            return res.status(400).json({ error: 'All fields are required.' });
+        }
 
-      // Add to temporary in-memory store
-      submissions.push(encryptedData);
+        // Encrypt sensitive fields
+        const encryptedData = {
+            relationship: formData.relationship,
+            firstName: encrypt(formData['first-name']),
+            lastName: encrypt(formData['last-name']),
+            email: encrypt(formData['email']),
+            phoneNumber: encrypt(formData['phone-number'] || ''), // Optional
+            contactMethod: formData['contact-method'],
+            subject: formData.subject,
+            question: encrypt(formData.question),
+            consent: formData.consent,
+        };
 
-      // Redirect user to a confirmation page
-      res.writeHead(302, { Location: 'redirecting.html' });
-      res.end();
-  } else {
-      res.status(405).send('Method Not Allowed');
-  }
+        // Save encrypted data
+        submissions.push(encryptedData);
+
+        // Respond with a redirect URL
+        return res.status(200).json({ redirect: 'redirecting.html' });
+    } else {
+        res.setHeader('Allow', ['POST']);
+        res.status(405).end('Method Not Allowed');
+    }
 }

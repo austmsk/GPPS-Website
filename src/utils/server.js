@@ -1,8 +1,9 @@
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const fs = require('fs');
 const path = require('path');
-const { encrypt, decrypt } = require('./encryption');
+const { encrypt, decrypt } = require('./encryption'); // Encryption module stays in utils
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -12,44 +13,41 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // Serve static files like CSS
-app.use('/pps-styles', express.static(path.join(__dirname, 'pps-styles')));
+app.use('/pps-styles', express.static(path.join(__dirname, '..', 'pps-styles')));
 
-// Serve the contact form as the default file
+// Sanitize inputs
+const sanitize = (str) => str.replace(/[<>\\/]/g, '');
+
+// Serve the contact form
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'contact-us.html'));
+    res.sendFile(path.join(__dirname, '..', 'contact-us.html'));
 });
 
-// Route to handle form submission
+// Handle form submissions
 app.post('/submit_contact_form', (req, res) => {
     const formData = req.body;
-    console.log('Form Data:', formData);
+
+    if (!formData['first-name'] || !formData['last-name'] || !formData.email || !formData.question) {
+        return res.status(400).send('Missing required fields.');
+    }
 
     const encryptedData = {
-        relationship: formData.relationship,
-        firstName: encrypt(formData['first-name']),
-        lastName: encrypt(formData['last-name']),
-        email: encrypt(formData['email']),
-        phoneNumber: encrypt(formData['phone-number']),
-        contactMethod: formData['contact-method'],
-        subject: formData.subject,
-        question: encrypt(formData.question),
-        consent: formData.consent
+        relationship: sanitize(formData.relationship),
+        firstName: encrypt(sanitize(formData['first-name'])),
+        lastName: encrypt(sanitize(formData['last-name'])),
+        email: encrypt(sanitize(formData['email'])),
+        phoneNumber: encrypt(sanitize(formData['phone-number'] || '')),
+        contactMethod: sanitize(formData['contact-method']),
+        subject: sanitize(formData.subject),
+        question: encrypt(sanitize(formData.question)),
+        consent: sanitize(formData.consent),
     };
 
-    // Read the existing data
-    fs.readFile('data.json', (err, data) => {
-        if (err && err.code !== 'ENOENT') {
-            console.error('Error reading file:', err);
-            return res.status(500).send('Internal server error');
-        }
-
-        const existingData = data ? JSON.parse(data) : [];
-
-        // Add new form data to the existing data
+    fs.readFile(path.join(__dirname, '..', 'data.json'), (err, data) => {
+        const existingData = err && err.code === 'ENOENT' ? [] : JSON.parse(data || '[]');
         existingData.push(encryptedData);
 
-        // Write the updated data back to the file
-        fs.writeFile('data.json', JSON.stringify(existingData, null, 2), (err) => {
+        fs.writeFile(path.join(__dirname, '..', 'data.json'), JSON.stringify(existingData, null, 2), (err) => {
             if (err) {
                 console.error('Error writing file:', err);
                 return res.status(500).send('Internal server error');
@@ -60,17 +58,11 @@ app.post('/submit_contact_form', (req, res) => {
     });
 });
 
-// Route to get all form submissions (for admin)
+// Admin routes
 app.get('/admin/submissions', (req, res) => {
-    fs.readFile('data.json', (err, data) => {
-        if (err && err.code !== 'ENOENT') {
-            console.error('Error reading file:', err);
-            return res.status(500).send('Internal server error');
-        }
-
-        const submissions = data ? JSON.parse(data) : [];
-
-        const decryptedSubmissions = submissions.map(submission => ({
+    fs.readFile(path.join(__dirname, '..', 'data.json'), (err, data) => {
+        const submissions = err && err.code === 'ENOENT' ? [] : JSON.parse(data || '[]');
+        const decryptedSubmissions = submissions.map((submission) => ({
             firstName: decrypt(submission.firstName),
             lastName: decrypt(submission.lastName),
             email: decrypt(submission.email),
@@ -79,19 +71,17 @@ app.get('/admin/submissions', (req, res) => {
             contactMethod: submission.contactMethod,
             subject: submission.subject,
             question: decrypt(submission.question),
-            consent: submission.consent
+            consent: submission.consent,
         }));
-
-        console.log('Sending decrypted data:', decryptedSubmissions); // Log the data before sending
         res.json(decryptedSubmissions);
     });
 });
 
-// Serve the admin page
 app.get('/admin', (req, res) => {
-    res.sendFile(path.join(__dirname, 'admin.html'));
+    res.sendFile(path.join(__dirname, '..', 'admin.html'));
 });
 
+// Start the server
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
 });

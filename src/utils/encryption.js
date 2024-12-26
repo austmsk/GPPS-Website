@@ -1,35 +1,43 @@
-require('dotenv').config();  //load dotenv that tells file to look at the env file and read requested variable
+require('dotenv').config();  // Load dotenv to read environment variables
+const crypto = require('crypto');
 
-const crypto = require('crypto'); 
-const algorithm = 'aes-256-ctr'; 
+// Define constants
+const algorithm = 'aes-256-ctr';
+const IV_SIZE = 16; // IV size for AES-256-CTR (16 bytes)
+const KEY_SIZE = 32; // Key size for AES-256 (32 bytes)
 
-//load the secret key from the enviroment variable 
-const secretKey = process.env.ENCRYPTION_KEY; 
+// Load the secret key from the environment variable
+const secretKey = process.env.ENCRYPTION_KEY;
 
-//throw an error if the secret key is not set 
-if (!secretKey || secretKey.length !== 64) { 
-    throw new Error('ENCRYPTION_KEY enviroment variable is not set');
+// Validate the secret key
+if (!secretKey || secretKey.length !== KEY_SIZE * 2) { // Hex key length is twice the byte size
+    throw new Error(`ENCRYPTION_KEY must be a ${KEY_SIZE * 2}-character hexadecimal string.`);
 }
 
 const keyBuffer = Buffer.from(secretKey, 'hex');
 
-const iv = crypto.randomBytes(16);
-
+// Encryption function
 function encrypt(text) {
+    const iv = crypto.randomBytes(IV_SIZE); // Generate a new IV for each encryption
     const cipher = crypto.createCipheriv(algorithm, keyBuffer, iv);
-    const encrypted = Buffer.concat([cipher.update(text), cipher.final()]); 
+    const encrypted = Buffer.concat([cipher.update(text), cipher.final()]);
 
-    return { 
-        iv: iv.toString('hex'), 
-        content: encrypted.toString('hex')
-    }; 
-} 
+    return {
+        iv: iv.toString('hex'),
+        content: encrypted.toString('hex'),
+    };
+}
 
-function decrypt(hash) { 
+// Decryption function
+function decrypt(hash) {
+    if (!hash || !hash.iv || !hash.content) {
+        throw new Error('Invalid hash object. Must contain iv and content.');
+    }
+
     const decipher = crypto.createDecipheriv(algorithm, keyBuffer, Buffer.from(hash.iv, 'hex'));
-    const decrypted = Buffer.concat([decipher.update(Buffer.from(hash.content, 'hex')), decipher.final()]); 
+    const decrypted = Buffer.concat([decipher.update(Buffer.from(hash.content, 'hex')), decipher.final()]);
 
     return decrypted.toString();
 }
 
-module.exports = {encrypt, decrypt}; 
+module.exports = { encrypt, decrypt };
