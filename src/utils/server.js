@@ -4,33 +4,32 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const fs = require('fs');
 const path = require('path');
-const { encrypt, decrypt } = require('./encryption'); // Encryption module stays in utils
+const { encrypt, decrypt } = require('./encryption');
 
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Middleware to parse form data
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// Serve static files like CSS
+// Serve static files
 app.use('/pps-styles', express.static(path.join(__dirname, '..', 'pps-styles')));
 app.use('/images', express.static(path.join(__dirname, '..', 'images')));
+app.use('/js', express.static(path.join(__dirname, '..', 'utils')));
+app.use(express.static(path.join(__dirname, '..')));
 
-// Sanitize inputs
+
 const sanitize = (str) => str.replace(/[<>\\/]/g, '');
 
-// Serve the contact form
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'contact-us.html'));
 });
 
-// Handle form submissions
 app.post('/submit_contact_form', (req, res) => {
     const formData = req.body;
 
     if (!formData['first-name'] || !formData['last-name'] || !formData.email || !formData.question) {
-        return res.status(400).send('Missing required fields.');
+        return res.status(400).json({ error: 'Missing required fields.' });
     }
 
     const encryptedData = {
@@ -52,15 +51,14 @@ app.post('/submit_contact_form', (req, res) => {
         fs.writeFile(path.join(__dirname, '..', 'data.json'), JSON.stringify(existingData, null, 2), (err) => {
             if (err) {
                 console.error('Error writing file:', err);
-                return res.status(500).send('Internal server error');
+                return res.status(500).json({ error: 'Internal server error' });
             }
             console.log('Data saved successfully.');
-            res.send('Form submitted successfully and data encrypted');
+            res.status(200).json({ redirect: 'redirecting.html' });
         });
     });
 });
 
-// Admin routes
 app.get('/admin/submissions', (req, res) => {
     fs.readFile(path.join(__dirname, '..', 'data.json'), (err, data) => {
         const submissions = err && err.code === 'ENOENT' ? [] : JSON.parse(data || '[]');
@@ -83,7 +81,6 @@ app.get('/admin', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'admin.html'));
 });
 
-// Start the server
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
 });

@@ -188,10 +188,10 @@
 
     <section class="contact-form">
         <section class="questionare-pps-contact">
-            <form action="/src/utils/submit-contact-form.js" method="post">
+            <form action="/submit_contact_form" method="POST">
                 <div class="user-inputs">
                     <div class="parent-student">
-                        <label for="designation"> Relationship to the School </label>
+                        <label for="designation">Relationship to the School</label>
                         <select name="relationship" id="designation" required>
                             <option value="Prospective Student">Prospective Student</option>
                             <option value="Current Student">Current Student</option>
@@ -216,7 +216,7 @@
                     </div>
                     <div class="student-demographics">
                         <fieldset>
-                            <legend class="legend-label"> Preferred Method of Contact </legend>
+                            <legend class="legend-label">Preferred Method of Contact</legend>
                             <div class="contact-method-selection">
                                 <input type="radio" name="contact-method" id="email-contact" value="EMAIL" required>
                                 <label for="email-contact">Email</label>
@@ -226,7 +226,7 @@
                                 <label for="phone-contact">Phone</label>
                             </div>
                         </fieldset>
-                        <label for="subject-inquiry"> Subject of Inquiry </label>
+                        <label for="subject-inquiry">Subject of Inquiry</label>
                         <div class="credentials-div">
                             <select name="subject" id="subject-inquiry" required>
                                 <option value="Admissions">Admissions</option>
@@ -244,11 +244,11 @@
                             <input id="privacy-agree" type="checkbox" name="consent" required>
                             &#160; I agree to the school's privacy policy and consent to my data being collected and used for the purpose of responding to my inquiry.
                         </label><br><br>
-
                         <button class="submit-button" type="submit">SUBMIT</button>
                     </div>
                 </div>
             </form>
+            
             <div class="pps-contact-map">
                 <div class="pps-contact">
                     <div class="phone">
@@ -272,6 +272,7 @@
 
     <!-- Show/Hide Sidebar JavaScript -->
     <script src="utils/PPSJS.js"></script>
+    <script src="/src/utils/submit-contact-form.js"></script>
     <script>
         const form = document.querySelector("form");
         form.addEventListener("submit", async (event) => {
