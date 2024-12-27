@@ -2,12 +2,12 @@
   "version": 2,
   "builds": [
     { "src": "api/**/*.js", "use": "@vercel/node" },
-    { "src": "public/**/*", "use": "@vercel/static" }
+    { "src": "/**/*", "use": "@vercel/static" }
   ],
   "redirects": [
     {
       "source": "/",
-      "destination": "home-page.html",
+      "destination": "/home-page.html",
       "permanent": true
     }
   ],
@@ -22,10 +22,10 @@
       ]
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "/submit_contact_form",
-      "dest": "/api/submit-contact-form.js"
+      "source": "/submit_contact_form",
+      "destination": "/api/submit-contact-form.js"
     }
   ]
 }
