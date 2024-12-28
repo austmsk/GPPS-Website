@@ -26,6 +26,10 @@
     {
       "source": "/submit_contact_form",
       "destination": "/api/submit-contact-form.js"
+    },
+    {
+      "source": "/admin/submissions",
+      "destination": "/api/fetch-submissions.js"
     }
   ]
 }

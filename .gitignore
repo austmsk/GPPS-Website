@@ -1,3 +1,5 @@
 .vercel
 encryption.js
 server.js
+.env
+

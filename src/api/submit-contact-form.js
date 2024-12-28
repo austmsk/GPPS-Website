@@ -1,53 +1,53 @@
-import { encrypt } from '../../utils/encryption';
-import fs from 'fs';
-import path from 'path';
+import { MongoClient } from "mongodb";
+
+const client = new MongoClient(process.env.MONGO_URI);
 
 export default async function handler(req, res) {
-    if (req.method === 'POST') {
+    if (req.method === "POST") {
         const formData = req.body;
 
-        // Validate input data
-        if (!formData['first-name'] || !formData['last-name'] || !formData.email || !formData.question) {
-            return res.status(400).json({ error: 'Missing required fields.' });
+        // Validate required fields
+        if (!formData["first-name"] || !formData["last-name"] || !formData.email || !formData.question) {
+            return res.status(400).json({ error: "Missing required fields." });
         }
 
-        // Encrypt sensitive fields
-        const encryptedData = {
-            relationship: formData.relationship,
-            firstName: encrypt(formData['first-name']),
-            lastName: encrypt(formData['last-name']),
-            email: encrypt(formData['email']),
-            phoneNumber: encrypt(formData['phone-number'] || ''),
-            contactMethod: formData['contact-method'],
-            subject: formData.subject,
-            question: encrypt(formData.question),
-            consent: formData.consent,
+        // Sanitize inputs
+        const sanitize = (str) => str.replace(/[<>]/g, "").trim();
+
+        // Create an object to store in the database
+        const submission = {
+            firstName: sanitize(formData["first-name"]),
+            lastName: sanitize(formData["last-name"]),
+            email: sanitize(formData.email),
+            phoneNumber: sanitize(formData["phone-number"] || "N/A"), // Optional
+            relationship: sanitize(formData.relationship || "N/A"), // Optional
+            contactMethod: sanitize(formData["contact-method"] || "N/A"), // Optional
+            subject: sanitize(formData.subject || "General Inquiry"), // Optional
+            question: sanitize(formData.question),
+            consent: formData.consent === "on", // Checkbox value
+            createdAt: new Date(),
         };
 
-        // Save encrypted data to a JSON file
-        const filePath = path.join(process.cwd(), 'data.json');
-        let existingData = [];
-
         try {
-            if (fs.existsSync(filePath)) {
-                const fileContents = fs.readFileSync(filePath);
-                existingData = JSON.parse(fileContents);
-            }
-        } catch (error) {
-            console.error('Error reading file:', error);
-        }
+            // Connect to the database
+            await client.connect();
+            const db = client.db("form-submissions"); // Database name
+            const collection = db.collection("submissions"); // Collection name
 
-        existingData.push(encryptedData);
+            // Insert the form submission into the database
+            await collection.insertOne(submission);
 
-        try {
-            fs.writeFileSync(filePath, JSON.stringify(existingData, null, 2));
-            return res.status(200).json({ redirect: '/redirecting.html' });
+            // Return success response
+            res.status(200).json({ redirect: "/redirecting.html" });
         } catch (error) {
-            console.error('Error writing file:', error);
-            return res.status(500).json({ error: 'Internal server error' });
+            console.error("Error saving submission:", error);
+            res.status(500).json({ error: "Internal Server Error" });
+        } finally {
+            await client.close();
         }
     } else {
-        res.setHeader('Allow', ['POST']);
-        return res.status(405).end('Method Not Allowed');
+        // Reject non-POST requests
+        res.setHeader("Allow", ["POST"]);
+        res.status(405).end("Method Not Allowed");
     }
 }
