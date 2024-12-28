@@ -188,7 +188,7 @@
 
     <section class="contact-form">
         <section class="questionare-pps-contact">
-            <form action="/submit_contact_form" method="POST">
+            <form action="/submit-contact-form.js" method="POST">
                 <div class="user-inputs">
                     <div class="parent-student">
                         <label for="designation">Relationship to the School</label>
@@ -272,7 +272,6 @@
 
     <!-- Show/Hide Sidebar JavaScript -->
     <script src="utils/PPSJS.js"></script>
-    <script src="/src/api/submit-contact-form.js"></script>
     <script>
         const form = document.querySelector("form");
         form.addEventListener("submit", async (event) => {
