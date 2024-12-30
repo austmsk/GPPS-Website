@@ -30,11 +30,11 @@
   ], 
 "rewrites": [
   {
-    "source": "/submit-contact-form",
-    "destination": "/submit-contact-form.js"
+    "source": "/api/submit-contact-form",
+    "destination": "/src/api/submit-contact-form"
   },
   {
-    "source": "/admin/submissions",
+    "source": "/api/admin/submissions",
     "destination": "/src/api/admin-submissions"
   }
 ]
