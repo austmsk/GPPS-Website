@@ -171,11 +171,12 @@
     color: var(--secondary-color);
     text-decoration: none;
     display: block;
-    width: 100%;
+    width: 100;
 }
 
 .drop-down li:hover {
     background-color: var(--secondary-color);
+    border-radius: 0.5rem;;
     color: #fff;
 }
 
@@ -188,6 +189,10 @@
 .drop-down.active {
     opacity: 1;
     visibility: visible;
+}
+
+.about .resources-dropdown { 
+    width: 120px;
 }
 
 /******************************************/
