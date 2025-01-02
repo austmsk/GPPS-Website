@@ -45,6 +45,7 @@ body {
   width: 300px;
   background-color: var(--background-color);
   border-radius: 5px;
+  border-width: 2px;
   margin: 10px;
   font-size: 1.125rem;
   font-weight: 500;
