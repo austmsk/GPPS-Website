@@ -148,6 +148,31 @@ body {
   text-decoration: underline;
 }
 
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+ul li {
+  list-style-type: "-  ";
+  font-family: var(--news-paragraph-font);
+  font-size: clamp(0.9em, 2.5vw, 1.1em);
+  line-height: 1.6;
+  color: var(--text-color);
+  margin-bottom: 10px;
+}
+
+ul li strong {
+  font-family: var(--news-header-font);
+  font-size: clamp(1em, 2.5vw, 1.2em);
+  color: var(--text-color);
+}
+
+#contact { 
+  list-style-type: none;
+}
+
 @media screen and (max-width: 1024px) {
   .background-div {
     padding: 20px 0;
