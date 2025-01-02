@@ -40,7 +40,7 @@ body {
   flex-wrap: wrap;
 }
 
-.user-resources a { 
+#button-resource { 
   text-decoration: none;
 }
 
