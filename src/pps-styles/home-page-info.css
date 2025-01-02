@@ -44,7 +44,8 @@ body {
   height: 50px;
   width: 300px;
   background-color: var(--background-color);
-  border: solid;
+  text-decoration: none;
+  border: solid #000;
   border-radius: 5px;
   border-width: 2px;
   margin: 10px;
