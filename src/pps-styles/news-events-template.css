@@ -173,6 +173,7 @@ ul li strong {
   list-style-type: none;
 }
 
+
 @media screen and (max-width: 1024px) {
   .background-div {
     padding: 20px 0;
