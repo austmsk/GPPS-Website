@@ -2,4 +2,6 @@
 encryption.js
 server.js
 .env
+.cline-ignore.yaml
+node_modules
 
