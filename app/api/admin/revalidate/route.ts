@@ -1,19 +1,27 @@
 import { NextResponse } from 'next/server';
 import { revalidatePath } from 'next/cache';
+import { getServerSession } from 'next-auth/next';
+import { authOptions } from '../../auth/[...nextauth]/route';
 
 /**
- * Unsecured on-demand revalidation endpoint (admin).
+ * Secured on-demand revalidation endpoint (admin).
  * POST { slug: 'speech-day-2024' }
  *
  * This will:
  *  - revalidate the article path: /news/:slug
  *  - revalidate the news listing: /news
  *
- * Note: This endpoint is intentionally unsecured per your choice. In production you should protect it.
+ * Requires an authenticated session (NextAuth).
  */
 
 export async function POST(request: Request) {
   try {
+    // verify session
+    const session = await getServerSession(authOptions);
+    if (!session) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
     const body = await request.json();
     const slug = body?.slug;
     if (!slug) {
@@ -26,7 +34,6 @@ export async function POST(request: Request) {
       revalidatePath('/news');
     } catch (err) {
       console.error('Revalidation error:', err);
-      // fall through to return 500
       return NextResponse.json({ error: 'Revalidation failed' }, { status: 500 });
     }
 

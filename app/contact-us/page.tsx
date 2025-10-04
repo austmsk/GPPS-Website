@@ -1,5 +1,12 @@
 export const revalidate = 86400; // 24 hours
 
+
+
+export const metadata = {
+  title: 'Contact Us | GPPS',
+  description: 'Contact Us page for GPPS.',
+};
+
 import ContactForm from '../../components/ContactForm';
 
 export default function ContactPage() {

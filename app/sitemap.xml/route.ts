@@ -9,7 +9,18 @@ export async function GET() {
   const pages: UrlEntry[] = [
     { loc: `${SITE_URL}/`, priority: 1.0, changefreq: 'daily' },
     { loc: `${SITE_URL}/news`, priority: 0.8, changefreq: 'hourly' },
-    { loc: `${SITE_URL}/contact-us`, priority: 0.5, changefreq: 'monthly' },
+    { loc: `${SITE_URL}/contact-us`, priority: 0.6, changefreq: 'monthly' },
+    { loc: `${SITE_URL}/apply`, priority: 0.7, changefreq: 'monthly' },
+    { loc: `${SITE_URL}/history`, priority: 0.6, changefreq: 'yearly' },
+    { loc: `${SITE_URL}/mission-and-vision`, priority: 0.6, changefreq: 'yearly' },
+    { loc: `${SITE_URL}/fees-structure`, priority: 0.6, changefreq: 'monthly' },
+    { loc: `${SITE_URL}/gpps-statement`, priority: 0.5, changefreq: 'yearly' },
+    { loc: `${SITE_URL}/religion`, priority: 0.5, changefreq: 'yearly' },
+    { loc: `${SITE_URL}/transportation`, priority: 0.5, changefreq: 'yearly' },
+    { loc: `${SITE_URL}/director-welcome-page`, priority: 0.5, changefreq: 'yearly' },
+    { loc: `${SITE_URL}/pps-template`, priority: 0.4, changefreq: 'yearly' },
+    { loc: `${SITE_URL}/pehf`, priority: 0.4, changefreq: 'yearly' },
+    { loc: `${SITE_URL}/redirecting`, priority: 0.2, changefreq: 'yearly' }
   ];
 
   const articles = await getAllArticleMetas();
