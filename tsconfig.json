@@ -35,6 +35,7 @@
     "lib/**/*",
     "content/**/*",
     "app/api/**/*",
+    "types/**/*",
     "next.config.js",
     ".next/types/**/*.ts"
   ],

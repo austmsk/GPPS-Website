@@ -26,6 +26,7 @@ export type ArticleMeta = {
 export type Article = {
   meta: ArticleMeta;
   contentHtml?: string;
+  mdxContent?: string;
 };
 
 const CONTENT_NEWS_DIR = path.join(process.cwd(), 'content', 'news');
@@ -123,5 +124,5 @@ export async function getArticleBySlug(slug: string): Promise<Article | null> {
   }
 
   // Return meta and whatever content we found (contentHtml may be derived from MDX)
-  return { meta, contentHtml, mdxContent } as any;
+  return { meta, contentHtml, mdxContent };
 }

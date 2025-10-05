@@ -1,12 +1,12 @@
 import AdminPublish from '../../components/AdminPublish';
 import { getAllArticleMetas } from '../../lib/fetchers';
 import { getServerSession } from 'next-auth/next';
-import { authOptions } from '../api/auth/[...nextauth]/route';
+import { authOptions } from '../../lib/auth';
 import { redirect } from 'next/navigation';
 
 export default async function AdminPage() {
   // Require authenticated session
-  const session = await getServerSession();
+  const session = await getServerSession(authOptions);
   if (!session) {
     // Redirect to sign-in page (NextAuth signIn)
     redirect('/signin');
