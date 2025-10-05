@@ -1,0 +1,7 @@
+{
+  "/page": "app/page.js",
+  "/news/page": "app/news/page.js",
+  "/director-welcome-page/page": "app/director-welcome-page/page.js",
+  "/contact-us/page": "app/contact-us/page.js",
+  "/news/[slug]/page": "app/news/[slug]/page.js"
+}

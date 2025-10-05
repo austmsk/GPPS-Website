@@ -6,50 +6,65 @@ export default function Footer() {
   return (
     <footer className="site-footer">
       <div className="container">
-        {/* Legacy-style top row: logos + map */}
-        <div className="bottom-info" style={{ display: 'flex', gap: 16, alignItems: 'stretch', padding: '12px 0', borderBottom: '1px solid rgba(255,255,255,0.2)', marginBottom: 12 }}>
-          <div className="bottom-imgs" style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
-            <img src="/images/pps-logo.png" alt="GPPS Logo" className="footer-img" style={{ height: 80, width: 'auto' }} />
-            <img src="/images/uganda.webp" alt="Uganda Flag" className="UG-img" style={{ height: 60, width: 'auto' }} />
-          </div>
-          <div className="map" style={{ flex: 1, minWidth: 260 }}>
-            <iframe
-              title="GPPS Location"
-              src="https://maps.google.com/maps?q=Kyotera%2C%20Uganda&t=&z=12&ie=UTF8&iwloc=&output=embed"
-              loading="lazy"
-            />
-          </div>
-        </div>
-
-        {/* Legacy-style second row: key links + contact + social */}
+        {/* Two halves horizontally: Left (logo + map + socials) | Right (contact) */}
         <div className="grid">
+          {/* Left half */}
           <div>
-            <Link href="/" className="brand">GPPS</Link>
-            <div><small>© {year} Grace Primary & Preparatory School</small></div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 8 }}>
+              <Link href="/" className="brand" aria-label="Go to home">
+                <img
+                  src="/images/pps-logo.png"
+                  alt="GPPS Logo"
+                  style={{ height: 56, width: 'auto', verticalAlign: 'middle' }}
+                />
+              </Link>
+              <span className="brand">GPPS</span>
+            </div>
+
+            {/* Map embed */}
+            <div className="map" style={{ marginTop: 8 }}>
+              <iframe
+                title="GPPS Location"
+                src="https://maps.google.com/maps?q=Kyotera%2C%20Uganda&t=&z=12&ie=UTF8&iwloc=&output=embed"
+                loading="lazy"
+                style={{ border: 'none', width: '100%', height: 300, borderRadius: 6 }}
+              />
+            </div>
+
           </div>
 
-          <div>
-            <h4>Key Links</h4>
-            <ul>
-              <li><Link href="/director-welcome-page">Director Welcome</Link></li>
-              <li><Link href="/apply">Admissions</Link></li>
-              <li><a href="https://schoolsuite.co.ug" target="_blank" rel="noopener noreferrer">School Pay</a></li>
-              <li><Link href="/contact-us">Contact Us</Link></li>
-            </ul>
-          </div>
-
+          {/* Right half */}
           <div>
             <h4>Contact</h4>
             <ul>
-              <li>Phone: +256-742-69-3000</li>
-              <li>Email: <a href="mailto:premier.prep.sch@gmail.com">premier.prep.sch@gmail.com</a></li>
-              <li>P.O. Box 335, Masaka, Uganda</li>
+              <li>
+                <a href="tel:+256742693000" style={{ color: 'inherit', textDecoration: 'none' }}>
+                  +256-742-69-3000
+                </a>
+              </li>
+              <li>
+                <a
+                  href="mailto:premier.prep.sch@gmail.com"
+                  style={{ color: 'inherit', textDecoration: 'none' }}
+                >
+                  premier.prep.sch@gmail.com
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://maps.google.com/maps?q=Kyotera%2C%20Uganda&t=&z=12&ie=UTF8&iwloc=&output=embed"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: 'inherit', textDecoration: 'none' }}
+                >
+                  P.O. Box 335, Masaka, Uganda
+                </a>
+              </li>
             </ul>
-          </div>
 
-          <div>
-            <h4>Follow</h4>
-            <div className="footer-social-media-links" style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
+             {/* Social icons */}
+
+            <div className="footer-social-media-links" style={{ display: 'flex', gap: 10, alignItems: 'center', marginTop: 10 }}>
               <a href="https://www.facebook.com/premier.preparatory.9" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                 <img src="/images/facebook.png" alt="" width={28} height={28} />
               </a>
@@ -63,6 +78,12 @@ export default function Footer() {
                 <img src="/images/youtube.png" alt="" width={28} height={28} />
               </a>
             </div>
+
+            <div style={{ marginTop: 8 }}>
+              <small>© {year} Grace Primary & Preparatory School</small>
+            </div>
+
+            
           </div>
         </div>
       </div>
