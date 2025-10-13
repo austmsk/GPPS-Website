@@ -18,7 +18,7 @@ export default function Footer() {
                   style={{ height: 56, width: 'auto', verticalAlign: 'middle' }}
                 />
               </Link>
-              <span className="brand">GPPS</span>
+              <span className="brand">Premier Preparatory School</span>
             </div>
 
             {/* Map embed */}

@@ -7,11 +7,14 @@ type FormState = {
   'last-name': string;
   email: string;
   'phone-number'?: string;
-  relationship?: string;
-  'contact-method'?: string;
+  relationship?: 'Parent/Guardian' | 'Student' | 'Staff' | 'Other';
+  'contact-method'?: 'Email' | 'Phone';
   subject?: string;
   question: string;
   consent?: boolean | string;
+  // anti-spam
+  middleName?: string; // honeypot: should remain empty
+  startedAt?: number; // timestamp to enforce min time-on-form
 };
 
 export default function ContactForm({ apiPath = '/api/submit-contact-form' }: { apiPath?: string }) {
@@ -20,6 +23,10 @@ export default function ContactForm({ apiPath = '/api/submit-contact-form' }: { 
     'last-name': '',
     email: '',
     question: '',
+    relationship: undefined,
+    'contact-method': undefined,
+    middleName: '',
+    startedAt: Date.now(),
   });
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
@@ -36,6 +43,11 @@ export default function ContactForm({ apiPath = '/api/submit-contact-form' }: { 
 
     if (!form['first-name'] || !form['last-name'] || !form.email || !form.question) {
       setError('Please fill the required fields: first name, last name, email, and question.');
+      return;
+    }
+    // basic human check: at least 3s on form
+    if (form.startedAt && Date.now() - form.startedAt < 3000) {
+      setError('Please take a moment to complete the form before submitting.');
       return;
     }
 
@@ -57,6 +69,13 @@ export default function ContactForm({ apiPath = '/api/submit-contact-form' }: { 
           'last-name': '',
           email: '',
           question: '',
+          'phone-number': '',
+          relationship: undefined,
+          'contact-method': undefined,
+          subject: '',
+          consent: false,
+          middleName: '',
+          startedAt: Date.now(),
         });
       }
     } catch (err) {
@@ -107,6 +126,37 @@ export default function ContactForm({ apiPath = '/api/submit-contact-form' }: { 
           style={{ padding: 8 }}
         />
 
+        <div style={{ display: 'flex', gap: 12 }}>
+          <div style={{ flex: 1 }}>
+            <label style={{ display: 'block', fontSize: 12, marginBottom: 4 }}>Relationship to GPPS</label>
+            <select
+              name="relationship"
+              value={form.relationship || ''}
+              onChange={e => update('relationship', (e.target.value || undefined) as any)}
+              style={{ width: '100%', padding: 8 }}
+            >
+              <option value="">Select…</option>
+              <option value="Parent/Guardian">Parent/Guardian</option>
+              <option value="Student">Student</option>
+              <option value="Staff">Staff</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div style={{ flex: 1 }}>
+            <label style={{ display: 'block', fontSize: 12, marginBottom: 4 }}>Preferred contact method</label>
+            <select
+              name="contact-method"
+              value={form['contact-method'] || ''}
+              onChange={e => update('contact-method', (e.target.value || undefined) as any)}
+              style={{ width: '100%', padding: 8 }}
+            >
+              <option value="">Select…</option>
+              <option value="Email">Email</option>
+              <option value="Phone">Phone</option>
+            </select>
+          </div>
+        </div>
+
         <input
           name="subject"
           placeholder="Subject"
@@ -124,6 +174,18 @@ export default function ContactForm({ apiPath = '/api/submit-contact-form' }: { 
           rows={6}
           style={{ padding: 8 }}
         />
+
+        {/* honeypot + timing (hidden) */}
+        <input
+          name="middleName"
+          autoComplete="off"
+          tabIndex={-1}
+          value={form.middleName || ''}
+          onChange={e => update('middleName', e.target.value)}
+          style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, opacity: 0 }}
+          aria-hidden="true"
+        />
+        <input type="hidden" name="startedAt" value={form.startedAt || Date.now()} />
 
         <label style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
           <input

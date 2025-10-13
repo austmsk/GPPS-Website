@@ -1,3 +1,5 @@
+
+
 import React from 'react';
 import Image from 'next/image';
 
@@ -16,15 +18,7 @@ export default function Page(): JSX.Element {
         className="director-welcome"
         style={{ padding: '12px 0 24px 0' }}
       >
-        <div
-          className="container"
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-            gap: 24,
-            alignItems: 'start',
-          }}
-        >
+        <div className="container director-grid">
           {/* Left: Director image */}
           <div>
             <Image
@@ -44,18 +38,9 @@ export default function Page(): JSX.Element {
 
           {/* Right: Welcome content */}
           <div>
-            <h1
-              style={{
-                margin: '0 0 12px 0',
-                fontFamily: 'var(--header-font)',
-                fontWeight: 800,
-                fontSize: '1.8rem',
-              }}
-            >
-              Director's Welcome
-            </h1>
+            <h1 className="director-title">Director's Welcome</h1>
 
-            <div style={{ lineHeight: 1.7, fontSize: '1rem' }}>
+            <div className="director-text">
               <p>
                 On behalf of the entire Genesis and Premier Preparatory Schools
                 (GPPS) community, I warmly welcome you to our website!

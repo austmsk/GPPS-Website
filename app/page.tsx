@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import HomeHeroSlideshow from '../components/HomeHeroSlideshow';
 
 export const revalidate = 86400; // 24h (ISR)
 
@@ -18,19 +19,14 @@ export default function Page(): JSX.Element {
         }}
       >
         <div className="container">
-          <Image
-            src="/images/FC225103-0813-423D-AEDD-254BA4309486_1_201_a.jpeg"
-            alt="Premier Preparatory School"
-            priority
-            sizes="(max-width: 768px) 100vw, 1100px"
-            width={2200}
-            height={900}
-            style={{
-              width: '100%',
-              height: 'auto',
-              borderRadius: 8,
-              display: 'block',
-            }}
+          <HomeHeroSlideshow
+            images={[
+              { src: '/images/History-hero.jpg', alt: 'Historic campus view' },
+              { src: '/images/MissionVision-hero.jpeg', alt: 'Mission and vision banner' },
+              { src: '/images/Religion-hero.jpeg', alt: 'Religious community gathering' },
+              { src: '/images/Transportation-bus.jpeg', alt: 'School transportation bus' },
+              { src: '/images/uganda.webp', alt: 'Uganda landscape' },
+            ]}
           />
         </div>
       </section>
@@ -45,28 +41,13 @@ export default function Page(): JSX.Element {
             gap: 16,
           }}
         >
-          <Link
-            href="/apply"
-            className="cta"
-            style={ctaStyle}
-            aria-label="How to Apply"
-          >
+          <Link href="/apply" className="btn btn-outline btn-lg" aria-label="How to Apply">
             How to Apply
           </Link>
-          <Link
-            href="/news"
-            className="cta"
-            style={ctaStyle}
-            aria-label="News and Events"
-          >
+          <Link href="/news" className="btn btn-outline btn-lg" aria-label="News and Events">
             News and Events
           </Link>
-          <Link
-            href="/contact-us"
-            className="cta"
-            style={ctaStyle}
-            aria-label="Contact Us"
-          >
+          <Link href="/contact-us" className="btn btn-outline btn-lg" aria-label="Contact Us">
             Contact Us
           </Link>
         </div>
@@ -294,18 +275,7 @@ export default function Page(): JSX.Element {
   );
 }
 
-const ctaStyle: React.CSSProperties = {
-  display: 'inline-flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  height: 48,
-  borderRadius: 8,
-  background: 'var(--primary-color)',
-  color: 'var(--secondary-color)',
-  textDecoration: 'none',
-  fontFamily: 'var(--button-font)',
-  fontWeight: 700,
-};
+
 
 const welcomeBannerStyle: React.CSSProperties = {
   margin: '0 0 10px 0',
@@ -325,6 +295,7 @@ const sectionHeaderStyle: React.CSSProperties = {
   fontFamily: 'var(--header-font)',
   fontWeight: 800,
   fontSize: '1.6rem',
+  textAlign: 'center'
 };
 
 const subHeaderStyle: React.CSSProperties = {

@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 
 export const metadata = {
   title: 'GPPS',
-  description: 'Grace Primary & Preparatory School',
+  description: 'Genesis Primary & Preparatory School',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 
 export default function Header() {
   const [openSidebar, setOpenSidebar] = useState(false);
@@ -18,51 +18,49 @@ export default function Header() {
         <div className="bar">
           <span className="brand-wrap">
             <Link href="/" className="brand">
-              <img src="/images/pps-logo.png" alt="GPPS Logo" style={{ height: 36, width: 'auto', verticalAlign: 'middle' }} />
+              <img
+                src="/images/pps-logo.png"
+                alt="GPPS Logo"
+                className='brand-logo'
+                style={{
+                  height: 72,
+                  width: 'auto',
+                  verticalAlign: 'middle'}} />
             </Link>
-            <Link href="/" className="brand-text-gradient">GPPS</Link>
+            <Link href="/" className="brand-text-gradient">Premier Preparatory School</Link>
           </span>
 
           {/* Desktop nav */}
           <nav aria-label="Main">
             <ul className="nav-list">
               <li>
-                <details className="dropdown">
-                  <summary>About Us</summary>
-                  <div className="dropdown-menu">
-                    <ul>
-                      <li><Link href="/director-welcome-page">Welcome from Director</Link></li>
-                      <li><Link href="/religion">Religious Affiliation</Link></li>
-                      <li><Link href="/mission-and-vision">Mission & Vision</Link></li>
-                      <li><Link href="/history">Our History</Link></li>
-                    </ul>
-                  </div>
-                </details>
+                <HoverDetails label="About Us">
+                  <ul>
+                    <li><Link href="/director-welcome-page">Welcome from Director</Link></li>
+                    <li><Link href="/religion">Religious Affiliation</Link></li>
+                    <li><Link href="/mission-and-vision">Mission & Vision</Link></li>
+                    <li><Link href="/history">Our History</Link></li>
+                  </ul>
+                </HoverDetails>
               </li>
 
               <li>
-                <details className="dropdown">
-                  <summary>Admissions</summary>
-                  <div className="dropdown-menu">
-                    <ul>
-                      <li><Link href="/apply">Apply</Link></li>
-                      <li><Link href="/fees-structure">Fees Structure</Link></li>
-                      <li><Link href="/transportation">Transportation</Link></li>
-                    </ul>
-                  </div>
-                </details>
+                <HoverDetails label="Admissions">
+                  <ul>
+                    <li><Link href="/apply">Apply</Link></li>
+                    <li><Link href="/fees-structure">Fees Structure</Link></li>
+                    <li><Link href="/transportation">Transportation</Link></li>
+                  </ul>
+                </HoverDetails>
               </li>
 
               <li>
-                <details className="dropdown">
-                  <summary>Resources</summary>
-                  <div className="dropdown-menu">
-                    <ul>
-                      <li><a href="https://schoolsuite.co.ug" target="_blank" rel="noopener noreferrer">School Pay</a></li>
-                      <li><Link href="/news">News & Events</Link></li>
-                    </ul>
-                  </div>
-                </details>
+                <HoverDetails label="Resources">
+                  <ul>
+                    <li><a href="https://schoolsuite.co.ug" target="_blank" rel="noopener noreferrer">School Pay</a></li>
+                    <li><Link href="/news">News & Events</Link></li>
+                  </ul>
+                </HoverDetails>
               </li>
 
               <li>
@@ -77,7 +75,7 @@ export default function Header() {
             className="menu-selection"
             onClick={() => setOpenSidebar(true)}
           >
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path d="M3 6h18M3 12h18M3 18h18" stroke="#111" strokeWidth="2" strokeLinecap="round" />
             </svg>
           </button>
@@ -146,5 +144,63 @@ export default function Header() {
         </ul>
       </aside>
     </header>
+  );
+}
+
+/**
+ * Desktop dropdown that opens gracefully on hover and focus,
+ * using a native <details> element for accessibility and keyboard support.
+ */
+function HoverDetails({ label, children }: { label: string; children: React.ReactNode }) {
+  const detailsRef = useRef<HTMLDetailsElement>(null);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const open = () => {
+    if (closeTimer.current) {
+      clearTimeout(closeTimer.current);
+      closeTimer.current = null;
+    }
+    if (detailsRef.current && !detailsRef.current.open) {
+      detailsRef.current.open = true;
+    }
+  };
+
+  const close = (delay = 120) => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    closeTimer.current = setTimeout(() => {
+      if (detailsRef.current) detailsRef.current.open = false;
+    }, delay);
+  };
+
+  // Close when pressing Escape while focused inside
+  useEffect(() => {
+    const node = detailsRef.current;
+    if (!node) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        node.open = false;
+        (node.querySelector('summary') as HTMLElement | null)?.focus();
+      }
+    };
+    node.addEventListener('keydown', onKey);
+    return () => node.removeEventListener('keydown', onKey);
+  }, []);
+
+  return (
+    <details
+      ref={detailsRef}
+      className="dropdown"
+      onMouseEnter={() => open()}
+      onMouseLeave={() => close(140)}
+      onFocus={() => open()}
+      onBlur={() => close(140)}
+    >
+      <summary aria-haspopup="menu" aria-expanded={detailsRef.current?.open ? 'true' : 'false'}>
+        {label}
+      </summary>
+      <div className="dropdown-menu" role="menu" onMouseEnter={() => open()} onMouseLeave={() => close(140)}>
+        {children}
+      </div>
+    </details>
   );
 }

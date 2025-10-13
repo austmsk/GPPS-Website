@@ -1,42 +1,74 @@
 import { NextResponse } from 'next/server';
 import { connectToDatabase } from '../../../lib/db';
+import { allow, getClientIpFromHeaders } from '../../../lib/rateLimit';
+import { sendNewLeadEmail } from '../../../lib/email';
 
 /**
  * POST /api/submit-contact-form
- * Accepts JSON body from contact form and saves to MongoDB.
- *
- * Expected body fields:
- *  - "first-name" (string)
- *  - "last-name"  (string)
- *  - email        (string)
- *  - question     (string)
- * Optional:
- *  - "phone-number", "relationship", "contact-method", "subject", "consent"
+ * Validates, rate-limits, stores to Mongo, and notifies by email.
  */
-
 export async function POST(request: Request) {
   try {
-    const body = await request.json();
-
-    if (!body || !body['first-name'] || !body['last-name'] || !body.email || !body.question) {
-      return NextResponse.json({ error: 'Missing required fields.' }, { status: 400 });
+    // Basic IP rate limit
+    const ip = getClientIpFromHeaders(request.headers);
+    if (!allow(ip)) {
+      return NextResponse.json({ error: 'Too many requests. Please try again later.' }, { status: 429 });
     }
 
-    const submission = {
-      firstName: String(body['first-name']),
-      lastName: String(body['last-name']),
-      email: String(body.email),
-      phoneNumber: body['phone-number'] ? String(body['phone-number']) : 'N/A',
-      relationship: body.relationship ? String(body.relationship) : 'N/A',
-      contactMethod: body['contact-method'] ? String(body['contact-method']) : 'N/A',
-      subject: body.subject ? String(body.subject) : 'General Inquiry',
-      question: String(body.question),
-      consent: body.consent === 'on' || body.consent === true,
+    const body = await request.json();
+    // Server-side validation (no external libs)
+    const first = (body?.['first-name'] || '').toString().trim();
+    const last = (body?.['last-name'] || '').toString().trim();
+    const email = (body?.email || '').toString().trim().toLowerCase();
+    const phone = body?.['phone-number'] ? body['phone-number'].toString().trim() : '';
+    const relationship = body?.relationship ? body.relationship.toString().trim() : '';
+    const contactMethod = body?.['contact-method'] ? body['contact-method'].toString().trim() : '';
+    const subject = body?.subject ? body.subject.toString().trim() : 'General Inquiry';
+    const question = (body?.question || '').toString().trim();
+    const consent = body?.consent === 'on' || body?.consent === true;
+    const middleName = (body?.middleName || '').toString().trim(); // honeypot
+    const startedAt = Number(body?.startedAt) || 0;
+
+    if (!first || !last || !email || !question) {
+      return NextResponse.json({ error: 'Missing required fields.' }, { status: 400 });
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      return NextResponse.json({ error: 'Invalid email.' }, { status: 400 });
+    }
+    if (question.length < 5 || question.length > 4000) {
+      return NextResponse.json({ error: 'Question length is invalid.' }, { status: 400 });
+    }
+    // Honeypot + minimal time-on-form
+    if (middleName) {
+      // silently accept to avoid tipping off bots
+      return NextResponse.json({ ok: true }, { status: 200 });
+    }
+    if (startedAt && Date.now() - startedAt < 3000) {
+      return NextResponse.json({ error: 'Please take a moment before submitting.' }, { status: 400 });
+    }
+
+    const doc = {
+      type: 'contact' as const,
+      firstName: first,
+      lastName: last,
+      email,
+      phoneNumber: phone || null,
+      relationship: relationship || null,
+      contactMethod: contactMethod || null,
+      subject,
+      question,
+      consent: !!consent,
+      ip,
+      ua: request.headers.get('user-agent') || '',
+      status: 'new',
       createdAt: new Date(),
     };
 
     const { db } = await connectToDatabase();
-    await db.collection('submissions').insertOne(submission);
+    await db.collection('contact_submissions').insertOne(doc);
+
+    // Fire-and-forget notification (do not block response if it fails)
+    sendNewLeadEmail('contact', doc).catch(() => {});
 
     return NextResponse.json({ message: 'Submission saved successfully!' }, { status: 200 });
   } catch (error) {

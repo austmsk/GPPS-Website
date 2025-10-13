@@ -112,7 +112,7 @@ main {
 }
 .brand-text-gradient {
   font-family: var(--header-font);
-  font-size: 24px;
+  font-size: 36px;
   font-weight: 800;
   background: linear-gradient(var(--gradient-start), var(--gradient-end));
   -webkit-background-clip: text;
@@ -142,7 +142,7 @@ main {
   color: var(--secondary-color);
   text-decoration: none;
   font-family: var(--header-font);
-  font-size: 1.05rem;
+  font-size: 1.25rem;
   font-weight: 500;
   padding: 6px 4px;
   border-bottom: 2px solid transparent;
@@ -162,8 +162,26 @@ main {
   list-style: none;
   cursor: pointer;
   color: var(--secondary-color);
-  font-weight: 600;
+  font-weight: 500;
+  font-size: 1.25rem;
   padding: 6px 4px;
+  outline: none;
+}
+.site-header details.dropdown summary:focus-visible {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+.site-header details.dropdown summary::-webkit-details-marker {
+  display: none;
+}
+.site-header details.dropdown summary .caret {
+  display: inline-block;
+  margin-left: 6px;
+  transition: transform 0.16s ease;
+}
+.site-header details.dropdown[open] summary .caret {
+  transform: rotate(180deg);
 }
 .site-header details.dropdown[open] summary {
   border-bottom: 2px solid var(--secondary-color);
@@ -179,6 +197,19 @@ main {
   border-radius: 8px;
   padding: 8px 0;
   z-index: 999;
+
+  /* Graceful open/close animation */
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.16s ease, transform 0.16s ease;
+  pointer-events: none;
+  visibility: hidden;
+}
+.site-header details.dropdown[open] .dropdown-menu {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  visibility: visible;
 }
 .site-header details.dropdown .dropdown-menu ul {
   list-style: none;
@@ -248,7 +279,7 @@ main {
 .menu-options-sidebar li {
   font-family: var(--button-font);
   color: var(--secondary-color);
-  font-size: 1rem;
+  font-size: 1.5rem;
   padding: 12px 12px;
   transition: background-color 0.2s, color 0.2s;
   border-radius: 6px;
@@ -284,6 +315,7 @@ main {
 /* Wider mobile handling */
 @media (max-width: 768px) {
   .sidebar { width: 100%; }
+  .brand-text-gradient { font-size: 28px; }
 }
 
 /* Footer (legacy gradient look) */
@@ -380,4 +412,108 @@ main {
   .site-footer .grid { grid-template-columns: 1fr; }
   .site-header .bar { gap: 10px; }
   .site-header nav ul.nav-list { gap: 12px; flex-wrap: wrap; }
+  .brand-text-gradient { font-size: 24px;}
+}
+
+/* Specific tweaks for legacy parity */ 
+@media (max-width: 440px) {
+  .brand-text-gradient { font-size: 20px;
+   }
+}
+@media (max-width: 400px) {
+  .brand-text-gradient { font-size: 18px;
+   }
+}
+
+/* Button utilities */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--button-font);
+  font-weight: 600;
+  padding: var(--btn-padding-y, 10px) var(--btn-padding-x, 16px);
+  border-radius: var(--btn-radius, 8px);
+  border: 1px solid transparent;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.05s ease;
+}
+.btn:focus-visible {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
+}
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-primary {
+  background: var(--secondary-color);
+  color: #fff;
+  border-color: var(--secondary-color);
+  box-shadow: 0 4px 16px rgba(0,0,0,.12);
+}
+.btn-primary:hover { background: #222; border-color: #222; }
+
+.btn-secondary {
+  background: var(--primary-color);
+  color: var(--secondary-color);
+  border-color: var(--primary-color);
+}
+.btn-secondary:hover { filter: brightness(.95); }
+
+.btn-outline {
+  background: transparent;
+  color: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+.btn-outline:hover { background: rgba(0,0,0,.06); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--secondary-color);
+  border-color: transparent;
+}
+.btn-ghost:hover { background: rgba(0,0,0,.06); }
+
+.btn-lg { padding: 14px 20px; font-size: 1.05rem; }
+.btn-sm { padding: 6px 10px; font-size: 0.9rem; }
+
+/* Director page responsive layout (moved from styled-jsx to global CSS) */
+.director-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .director-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+.director-title {
+  margin: 0 0 12px 0;
+  font-family: var(--header-font);
+  font-weight: 800;
+  font-size: clamp(1.4rem, 1rem + 1.5vw, 1.8rem);
+}
+.director-text {
+  line-height: 1.8;
+  font-size: clamp(0.95rem, 0.9rem + 0.5vw, 1rem);
+}
+/* Tighter list indent on very small screens */
+@media (max-width: 480px) {
+  .director-welcome ul {
+    margin-left: 14px;
+  }
 }
