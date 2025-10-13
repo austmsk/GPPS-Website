@@ -1,6 +1,7 @@
 export const revalidate = 300; // 5 minutes
 
 import Link from 'next/link';
+import Breadcrumbs from '../../components/Breadcrumbs';
 import { getAllArticleMetas, type ArticleMeta } from '../../lib/fetchers';
 
 export default async function NewsListPage() {
@@ -8,6 +9,9 @@ export default async function NewsListPage() {
 
   return (
     <section>
+      <div className="container" style={{ marginBottom: 12 }}>
+        <Breadcrumbs items={[{ href: '/', label: 'Home' }, { href: '/news', label: 'News & Events' }]} />
+      </div>
       <h1>News & Events</h1>
       <p>Latest news and announcements from GPPS.</p>
 

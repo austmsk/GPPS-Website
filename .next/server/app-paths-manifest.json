@@ -1,7 +1,8 @@
 {
+  "/director-welcome-page/page": "app/director-welcome-page/page.js",
+  "/mission-and-vision/page": "app/mission-and-vision/page.js",
   "/news/page": "app/news/page.js",
-  "/apply/page": "app/apply/page.js",
-  "/transportation/page": "app/transportation/page.js",
-  "/fees-structure/page": "app/fees-structure/page.js",
-  "/page": "app/page.js"
+  "/religion/page": "app/religion/page.js",
+  "/history/page": "app/history/page.js",
+  "/apply/page": "app/apply/page.js"
 }

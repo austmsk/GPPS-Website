@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Breadcrumbs from '../../components/Breadcrumbs';
 
 export const revalidate = 86400;
 
@@ -11,6 +12,9 @@ export const metadata = {
 export default function Page(): JSX.Element {
   return (
     <section>
+      <div className="container" style={{ marginBottom: 12 }}>
+        <Breadcrumbs items={[{ href: '/', label: 'Home' }, { href: '/fees-structure', label: 'Fees Structure' }]} />
+      </div>
       <h1>Fees Structure</h1>
 
       <p>

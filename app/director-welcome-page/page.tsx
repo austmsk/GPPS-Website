@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import Breadcrumbs from '../../components/Breadcrumbs';
 
 export const revalidate = 604800; // 7 days (rarely changes)
 
@@ -14,6 +15,9 @@ export const metadata = {
 export default function Page(): JSX.Element {
   return (
     <main>
+      <div className="container" style={{ margin: '8px 0' }}>
+        <Breadcrumbs items={[{ href: '/', label: 'Home' }, { href: '/director-welcome-page', label: "Director's Welcome" }]} />
+      </div>
       <section
         className="director-welcome"
         style={{ padding: '12px 0 24px 0' }}

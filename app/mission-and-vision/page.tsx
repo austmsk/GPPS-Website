@@ -48,6 +48,7 @@ export default function Page(): JSX.Element {
                 fontFamily: 'var(--header-font)',
                 fontWeight: 800,
                 fontSize: '1.8rem',
+                
               }}
             >
               Mission & Vision

@@ -1,5 +1,6 @@
 import React from 'react';
 import ApplyForm from '../../components/ApplyForm';
+import Breadcrumbs from '../../components/Breadcrumbs';
 
 export const revalidate = 604800; // weekly (content changes infrequently)
 
@@ -13,6 +14,9 @@ export const metadata = {
 export default function ApplyPage(): JSX.Element {
   return (
     <main>
+      <div className="container" style={{ margin: '8px 0' }}>
+        <Breadcrumbs items={[{ href: '/', label: 'Home' }, { href: '/apply', label: 'How to Apply' }]} />
+      </div>
       {/* Centered content area (legacy-style left | middle | right) */}
       <section className="apply-section" style={{ padding: '12px 0 28px 0' }}>
         <div

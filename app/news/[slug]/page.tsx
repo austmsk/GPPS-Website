@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import { serialize } from 'next-mdx-remote/serialize';
+import Image from 'next/image';
 
 type Params = {
   params: { slug: string };
@@ -55,6 +56,27 @@ export default async function ArticlePage({ params }: Params) {
     });
   }
 
+  // MDX component overrides: render <img> with Next/Image
+  const mdxComponents = {
+    Image,
+    img: (props: any) => {
+      const { src = '', alt = '', width, height, style, ...rest } = props;
+      const w = typeof width === 'number' ? width : 1600;
+      const h = typeof height === 'number' ? height : 900;
+      return (
+        <Image
+          src={src}
+          alt={alt}
+          width={w}
+          height={h}
+          sizes="(max-width: 768px) 100vw, 800px"
+          style={{ width: '100%', height: 'auto', ...style }}
+          {...rest}
+        />
+      );
+    },
+  } as const;
+
   return (
     <article>
       <header style={{ marginBottom: 20 }}>
@@ -67,7 +89,15 @@ export default async function ArticlePage({ params }: Params) {
 
       {meta.image && (
         <figure style={{ margin: '16px 0' }}>
-          <img src={meta.image} alt={meta.title} style={{ maxWidth: '100%', height: 'auto' }} />
+          <Image
+            src={meta.image}
+            alt={meta.title}
+            width={1600}
+            height={900}
+            sizes="(max-width: 768px) 100vw, 1024px"
+            style={{ width: '100%', height: 'auto', borderRadius: 8 }}
+            priority
+          />
         </figure>
       )}
 
@@ -75,7 +105,7 @@ export default async function ArticlePage({ params }: Params) {
         {contentHtml ? (
           <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
         ) : mdxSource ? (
-          <MDXRemote {...mdxSource} components={{}} />
+          <MDXRemote {...mdxSource} components={mdxComponents} />
         ) : (
           <p>{meta.description}</p>
         )}
