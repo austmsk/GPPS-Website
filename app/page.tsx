@@ -21,11 +21,11 @@ export default function Page(): JSX.Element {
         <div className="container">
           <HomeHeroSlideshow
             images={[
-              { src: '/images/History-hero.jpg', alt: 'Historic campus view' },
-              { src: '/images/MissionVision-hero.jpeg', alt: 'Mission and vision banner' },
-              { src: '/images/Religion-hero.jpeg', alt: 'Religious community gathering' },
-              { src: '/images/Transportation-bus.jpeg', alt: 'School transportation bus' },
-              { src: '/images/uganda.webp', alt: 'Uganda landscape' },
+              { src: '/images/HP_IMG1.jpeg', alt: 'Historic campus view' },
+              { src: '/images/HP_IMG2.jpeg', alt: 'Mission and vision banner' },
+              { src: '/images/HP_IMG3.jpeg', alt: 'Religious community gathering' },
+              { src: '/images/HP_IMG4.jpeg', alt: 'School transportation bus' },
+              { src: '/images/HP_IMG5.jpeg', alt: 'Uganda landscape' },
             ]}
           />
         </div>
@@ -68,7 +68,7 @@ export default function Page(): JSX.Element {
           <div>
             <div style={{ marginBottom: 12 }}>
               <Image
-                src="/images/DD4A44CE-11DB-4F8C-B9AB-C585D963A5E0_1_201_a.jpeg"
+                src="/images/welcome-pic.jpeg"
                 alt="Campus life at GPPS"
                 sizes="(max-width: 768px) 100vw, 540px"
                 width={1200}
@@ -76,14 +76,6 @@ export default function Page(): JSX.Element {
                 style={{ width: '100%', height: 'auto', borderRadius: 8 }}
               />
             </div>
-            <Image
-              src="/images/FC225103-0813-423D-AEDD-254BA4309486_1_201_a.jpeg"
-              alt="Student activities at GPPS"
-              sizes="(max-width: 768px) 100vw, 540px"
-              width={1200}
-              height={900}
-              style={{ width: '100%', height: 'auto', borderRadius: 8 }}
-            />
           </div>
 
           {/* Text column */}
