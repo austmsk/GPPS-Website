@@ -1,42 +1,10 @@
 /* Site-wide header and footer styling approximating the original HTML look-and-feel, now matched to legacy */
 
-/* Legacy fonts (local copies in /public/fonts) */
-@font-face {
-  font-family: header-font;
-  src: url('/fonts/Rajdhani-Variable.ttf') format('truetype');
-  font-display: swap;
-}
-@font-face {
-  font-family: button-font;
-  src: url('/fonts/Chillax-Variable.ttf') format('truetype');
-  font-display: swap;
-}
-@font-face {
-  font-family: paragraph-font;
-  src: url('/fonts/GeneralSans-Variable.ttf') format('truetype');
-  font-display: swap;
-}
-@font-face {
-  font-family: news-header-font;
-  src: url('/fonts/Boska-Light.ttf') format('truetype');
-  font-display: swap;
-}
-@font-face {
-  font-family: news-paragraph-font;
-  src: url('/fonts/GeneralSans-Variable.ttf') format('truetype');
-  font-display: swap;
-}
-@font-face {
-  font-family: news-author-font;
-  src: url('/fonts/Boska-Variable.ttf') format('truetype');
-  font-display: swap;
-}
+
 
 /* Legacy variables */
 :root {
-  --main-font: 'paragraph-font', sans-serif;
-  --header-font: 'header-font', sans-serif;
-  --button-font: 'button-font', sans-serif;
+  /* Font variables come from next/font via class on <html>; provide no defaults here to avoid overrides */
   --primary-color: #FFD700;
   --background-color: #ffffff;
   --secondary-color: #000000;
@@ -485,6 +453,51 @@ main {
 }
 .btn-ghost:hover { background: rgba(0,0,0,.06); }
 
+.btn-lg { padding: 14px 20px; font-size: 1.05rem; }
+.btn-sm { padding: 6px 10px; font-size: 0.9rem; }
+
+/* Home welcome grid responsive */
+.welcome-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+@media (max-width: 768px) {
+  .welcome-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Director page responsive layout (moved from styled-jsx to global CSS) */
+.director-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .director-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+.director-title {
+  margin: 0 0 12px 0;
+  font-family: var(--header-font);
+  font-weight: 800;
+  font-size: clamp(1.4rem, 1rem + 1.5vw, 1.8rem);
+}
+.director-text {
+  line-height: 1.8;
+  font-size: clamp(0.95rem, 0.9rem + 0.5vw, 1rem);
+}
+/* Tighter list indent on very small screens */
+@media (max-width: 480px) {
+  .director-welcome ul {
+    margin-left: 14px;
+  }
+}
 .btn-lg { padding: 14px 20px; font-size: 1.05rem; }
 .btn-sm { padding: 6px 10px; font-size: 0.9rem; }
 

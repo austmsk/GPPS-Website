@@ -30,7 +30,7 @@ export default function AdminPublish({ slug }: { slug: string }) {
 
   return (
     <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-      <button onClick={handlePublish} disabled={loading} style={{ padding: '6px 10px' }}>
+      <button onClick={handlePublish} disabled={loading} className="btn btn-primary">
         {loading ? 'Publishing…' : 'Publish & Revalidate'}
       </button>
       {status && <small style={{ color: status.startsWith('Error') ? 'crimson' : 'green' }}>{status}</small>}

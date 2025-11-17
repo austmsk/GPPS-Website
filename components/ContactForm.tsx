@@ -32,6 +32,11 @@ export default function ContactForm({ apiPath = '/api/submit-contact-form' }: { 
   const [message, setMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
+  // Match Admin editor input styles
+  const inputStyle: React.CSSProperties = { width: '100%', padding: 10, borderRadius: 8, border: '1px solid #ddd' };
+  const selectStyle: React.CSSProperties = { width: '100%', padding: 10, borderRadius: 8, border: '1px solid #ddd' };
+  const textareaStyle: React.CSSProperties = { width: '100%', padding: 12, borderRadius: 8, border: '1px solid #ddd' };
+
   function update<K extends keyof FormState>(key: K, value: FormState[K]) {
     setForm(prev => ({ ...prev, [key]: value }));
   }
@@ -96,7 +101,7 @@ export default function ContactForm({ apiPath = '/api/submit-contact-form' }: { 
             value={form['first-name']}
             onChange={e => update('first-name', e.target.value)}
             required
-            style={{ flex: 1, padding: 8 }}
+            style={{ ...inputStyle, flex: 1 }}
           />
           <input
             name="last-name"
@@ -104,7 +109,7 @@ export default function ContactForm({ apiPath = '/api/submit-contact-form' }: { 
             value={form['last-name']}
             onChange={e => update('last-name', e.target.value)}
             required
-            style={{ flex: 1, padding: 8 }}
+            style={{ ...inputStyle, flex: 1 }}
           />
         </div>
 
@@ -115,7 +120,7 @@ export default function ContactForm({ apiPath = '/api/submit-contact-form' }: { 
           value={form.email}
           onChange={e => update('email', e.target.value)}
           required
-          style={{ padding: 8 }}
+          style={inputStyle}
         />
 
         <input
@@ -123,7 +128,7 @@ export default function ContactForm({ apiPath = '/api/submit-contact-form' }: { 
           placeholder="Phone number"
           value={form['phone-number'] || ''}
           onChange={e => update('phone-number', e.target.value)}
-          style={{ padding: 8 }}
+          style={inputStyle}
         />
 
         <div style={{ display: 'flex', gap: 12 }}>
@@ -133,7 +138,7 @@ export default function ContactForm({ apiPath = '/api/submit-contact-form' }: { 
               name="relationship"
               value={form.relationship || ''}
               onChange={e => update('relationship', (e.target.value || undefined) as any)}
-              style={{ width: '100%', padding: 8 }}
+              style={selectStyle}
             >
               <option value="">Select…</option>
               <option value="Parent/Guardian">Parent/Guardian</option>
@@ -148,7 +153,7 @@ export default function ContactForm({ apiPath = '/api/submit-contact-form' }: { 
               name="contact-method"
               value={form['contact-method'] || ''}
               onChange={e => update('contact-method', (e.target.value || undefined) as any)}
-              style={{ width: '100%', padding: 8 }}
+              style={selectStyle}
             >
               <option value="">Select…</option>
               <option value="Email">Email</option>
@@ -162,7 +167,7 @@ export default function ContactForm({ apiPath = '/api/submit-contact-form' }: { 
           placeholder="Subject"
           value={form.subject || ''}
           onChange={e => update('subject', e.target.value)}
-          style={{ padding: 8 }}
+          style={inputStyle}
         />
 
         <textarea
@@ -171,8 +176,8 @@ export default function ContactForm({ apiPath = '/api/submit-contact-form' }: { 
           value={form.question}
           onChange={e => update('question', e.target.value)}
           required
-          rows={6}
-          style={{ padding: 8 }}
+          rows={8}
+          style={textareaStyle}
         />
 
         {/* honeypot + timing (hidden) */}
@@ -200,7 +205,7 @@ export default function ContactForm({ apiPath = '/api/submit-contact-form' }: { 
         {message && <div style={{ color: 'green' }}>{message}</div>}
 
         <div>
-          <button type="submit" disabled={loading} style={{ padding: '10px 16px' }}>
+          <button type="submit" disabled={loading} className="btn btn-primary">
             {loading ? 'Submitting…' : 'Submit'}
           </button>
         </div>

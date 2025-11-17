@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import React, { useRef, useState, useEffect } from 'react';
 
 export default function Header() {
@@ -17,15 +18,15 @@ export default function Header() {
       <div className="container">
         <div className="bar">
           <span className="brand-wrap">
-            <Link href="/" className="brand">
-              <img
+            <Link href="/" className="brand" aria-label="GPPS Home">
+              <Image
                 src="/images/pps-logo.png"
                 alt="GPPS Logo"
-                className='brand-logo'
-                style={{
-                  height: 72,
-                  width: 'auto',
-                  verticalAlign: 'middle'}} />
+                width={160}
+                height={72}
+                priority
+                style={{ height: '72px', width: 'auto', verticalAlign: 'middle' }}
+              />
             </Link>
             <Link href="/" className="brand-text-gradient">Premier Preparatory School</Link>
           </span>

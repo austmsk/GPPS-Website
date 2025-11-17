@@ -221,7 +221,7 @@ export default function ApplyPage(): JSX.Element {
             </p>
 
             {/* Online application form (kept from current site) */}
-            <div style={{ marginTop: 20 }}>
+            {/* <div style={{ marginTop: 20 }}>
               <h2
                 style={{
                   margin: '0 0 8px 0',
@@ -233,7 +233,7 @@ export default function ApplyPage(): JSX.Element {
                 Online Application Form
               </h2>
               <ApplyForm />
-            </div>
+            </div> */}
           </div>
           <div aria-hidden="true" />
         </div>

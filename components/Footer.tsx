@@ -25,7 +25,7 @@ export default function Footer() {
             <div className="map" style={{ marginTop: 8 }}>
               <iframe
                 title="GPPS Location"
-                src="https://maps.google.com/maps?q=Kyotera%2C%20Uganda&t=&z=12&ie=UTF8&iwloc=&output=embed"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.4464329606412!2d31.485027212235142!3d-0.7822942992068073!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19d9e726975afb55%3A0xf5c705c6d52416f3!2sPremier%20Preparatory%20School%20-%20Sanje%20Kyotera!5e0!3m2!1sen!2sus!4v1763365504328!5m2!1sen!2sus"
                 loading="lazy"
                 style={{ border: 'none', width: '100%', height: 300, borderRadius: 6 }}
               />

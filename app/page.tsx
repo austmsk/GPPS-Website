@@ -1,7 +1,23 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import HomeHeroSlideshow from '../components/HomeHeroSlideshow';
+import dynamic from 'next/dynamic';
+
+const HomeHeroSlideshow = dynamic(() => import('../components/HomeHeroSlideshow'), {
+  ssr: false,
+  loading: () => (
+    <div style={{ position: 'relative', width: '100%', minHeight: '52vh', borderRadius: 8, overflow: 'hidden', background: '#000' }}>
+      <Image
+        src="/images/HP_IMG1.jpeg"
+        alt="Historic campus view"
+        fill
+        priority
+        sizes="(max-width: 1200px) 100vw, 1200px"
+        style={{ objectFit: 'cover' }}
+      />
+    </div>
+  ),
+});
 
 export const revalidate = 86400; // 24h (ISR)
 
@@ -21,12 +37,14 @@ export default function Page(): JSX.Element {
         <div className="container">
           <HomeHeroSlideshow
             images={[
+              { src: '/images/HP_IMG6.jpeg', alt: 'Historic campus view' },
               { src: '/images/HP_IMG1.jpeg', alt: 'Historic campus view' },
               { src: '/images/HP_IMG2.jpeg', alt: 'Mission and vision banner' },
               { src: '/images/HP_IMG3.jpeg', alt: 'Religious community gathering' },
               { src: '/images/HP_IMG4.jpeg', alt: 'School transportation bus' },
               { src: '/images/HP_IMG5.jpeg', alt: 'Uganda landscape' },
             ]}
+            priorityFirst={false}
           />
         </div>
       </section>
@@ -55,15 +73,7 @@ export default function Page(): JSX.Element {
 
       {/* WELCOME SECTION */}
       <section className="welcome" style={{ margin: '24px 0' }}>
-        <div
-          className="container"
-          style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gap: 24,
-            alignItems: 'start',
-          }}
-        >
+        <div className="container welcome-grid">
           {/* Image column (use available legacy images) */}
           <div>
             <div style={{ marginBottom: 12 }}>
