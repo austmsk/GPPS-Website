@@ -80,7 +80,7 @@ export default function Footer() {
             </div>
 
             <div style={{ marginTop: 8 }}>
-              <small>© {year} Grace Primary & Preparatory School</small>
+              <small>© {year} Genesis Primary & Preparatory School</small>
             </div>
 
             
