@@ -6,7 +6,7 @@ import Breadcrumbs from '../../components/Breadcrumbs';
 export const revalidate = 604800; // weekly (rare content changes)
 
 export const metadata = {
-  title: 'Our History | GPPS',
+  title: 'Our History',
   description:
     'The story of Genesis and Premier Preparatory Schools (GPPS) — founded in 2019 with a vision for holistic education and resilience.',
   alternates: { canonical: '/history' },

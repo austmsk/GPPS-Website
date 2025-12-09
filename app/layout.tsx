@@ -6,10 +6,13 @@ import Footer from '../components/Footer';
 import { headerFont, buttonFont, paragraphFont, newsHeaderFont, newsParagraphFont, newsAuthorFont } from './fonts';
 
 export const metadata: Metadata = {
-  title: 'Genesis & Premier Preparatory School',
+  title: {
+    default: 'Genesis & Premier Preparatory School',
+    template: '%s | GPPS',
+  },
   description: 'Genesis & Premier Preparatory School (GPPS) is a nurturing learning environment focused on strong academics, character development, and community for children in Uganda.',
   keywords: [
-    'Genesis Primary and Preparatory School',
+    'Genesis & Premier Preparatory School',
     'GPPS',
     'primary school Uganda',
     'preparatory school',
